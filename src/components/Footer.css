@@ -1,0 +1,39 @@
+.footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 15px;
+    color: white;
+    text-align: center;
+    font-weight: 300;
+}
+
+.footer-text-title {
+    font-size: 20px;
+    line-height: 32px;
+}
+
+.footer-text-brand {
+    display: block;
+    font-weight: 700;
+}
+
+.footer-text-semester {
+    font-size: 16px;
+}
+
+@media only screen and (max-width: 767px) {
+    .footer-text-title {
+        font-size: 16px;
+    }
+    .footer-text-semester {
+        font-size: 14px;
+    }
+}
+
+
+@media only screen and (max-width: 480px) {
+    .footer-text-semester {
+        display: none;
+    }
+}
