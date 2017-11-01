@@ -1,3 +1,21 @@
 .app {
   position: relative;
+  background-color: black;
+  padding-bottom: 80px;
+}
+
+.active-tab div h2 {
+  font-weight: bold !important;
+}
+
+.active-tab {
+  display: block !important;
+}
+
+.tab-title:hover {
+  cursor: pointer;
+}
+
+.tab {
+  display: none;
 }

@@ -6,11 +6,12 @@ import '../iconFont.css';
 class Header extends Component {
   render() {
     return (
+
       <div className='navbar'>
-        <Link to='/'>
+        <Link to='/ch101'>
         <div className='navbar-ch101'>
           <div className='subject-container'>
-            <div className='upper-bar-ch101' />
+            <div className='upper-bar-ch101'/>
             <h1 className='subject-code'>CH101</h1>
             <h3 className='subject-title'>General<span className='subject-space'>&nbsp;</span></h3>
             <h3 className='subject-title'>Chemistry</h3>
@@ -18,7 +19,7 @@ class Header extends Component {
           <div className='icon icon-down-open-big arrow-ch101' />
         </div>
         </Link>
-        <Link to='/roster'>
+        <Link to='/ch102'>
         <div className='navbar-ch102'>
           <div className='subject-container'>
             <div className='upper-bar-ch102' />

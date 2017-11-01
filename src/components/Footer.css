@@ -6,6 +6,8 @@
     color: white;
     text-align: center;
     font-weight: 300;
+    min-width: 360px;
+    background-color: black;
 }
 
 .footer-text-title {

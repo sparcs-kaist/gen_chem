@@ -1,0 +1,10 @@
+.fontstyle {
+    font-size: 20px;
+    font-family: "Nanum Square";
+}
+
+@media only screen and (max-width: 480px) {
+    .fontstyle {
+        font-size: 15px;
+    }
+}
