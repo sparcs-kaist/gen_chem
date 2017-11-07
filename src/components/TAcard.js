@@ -3,19 +3,38 @@ import '../grid.css';
 import '../Nanum.css';
 
 const imgstyle ={
-    float : 'left',
-    height:'110px',
-    width:'110px',
-    borderRadius:'42px',
-    margin : '20px'
+    height:'45px',
+    width:'45px',
+    borderRadius:'25px',
+    marginLeft: '17px',
+    marginTop: '17px',
+    float : 'left'
 }
 
 const card = {
-    maxWidth: '420px',
-    height : '150px',
-    backgroundColor: '#DBDBDB',
-    borderRadius: '24px',
-    margin : 'auto'
+    maxWidth: '500px',
+    height : '140px',
+    backgroundColor: '#EBEBEB',
+    borderRadius: '30px',
+    margin : 'auto',
+    marginBottom : "20px"
+}
+
+const title = {
+    maxWidth : '300px',
+    height : '50px',
+    fontFamily : "Nanum Square",
+    fontSize : "15pt",
+    fontWeight : "700",
+    paddingTop : '29px',
+    marginLeft: '75px'
+}
+
+const info = {
+    clear : 'both',
+    fontFamily : "Nanum Square",
+    fontSize : "11pt",
+    marginLeft : '25px'
 }
 
 class TACard extends Component {
@@ -23,17 +42,15 @@ class TACard extends Component {
         return (
             <div style={card}>
                 <img src={this.props.img} alt = "TA" style = {imgstyle}/>
-                <div style = {{float : 'left', fontFamily : "Nanum Square", fontSize : "11pt"}}>
-                    <div style = {{marginTop : '31.7px'}}>
-                        <p style={{fontSize : "14pt", margin : "0px", fontWeight : "700"}}>
-                            {this.props.name}
-                        </p>
-                        <p>
-                            <span style={{fontWeight : "700"}}>E-mail</span> : {this.props.email}
-                        </p>
-                        <p>
-                            <span style={{fontWeight : "700"}}>Call</span> : {this.props.call}
-                        </p>
+                <div style={title}>
+                    {this.props.name}
+                </div>
+                <div style = {info}>
+                    <div style={{width : '300px', height : '15px'}}>
+                        <span style={{fontWeight : "700"}}>E-mail</span> : {this.props.email}
+                    </div>
+                    <div style={{marginTop : '7px', width : "300px",height : '15px'}}>
+                        <span style={{fontWeight : "700"}}>Lab</span> : {this.props.lab}
                     </div>
                 </div>
             </div>
