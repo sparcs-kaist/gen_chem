@@ -3,6 +3,7 @@ import '../grid.css';
 import TACard from './TAcard';
 import '../Nanum.css';
 
+
 const TAs = [
     {
         name: '이지민',
@@ -58,30 +59,21 @@ class TAContact extends Component {
             );
         })
 
-        const head = {
-            width : '100%',
-            paddingLeft : '15%',
-            paddingRight : '15%',
-            paddingTop : "27px",
-            fontFamily : 'Nanum Square'
-        }
-
         return (
             <div>
                 <div className = 'section' style = {{paddingBotton : "40px"}}>
-                    <div style = {head}>
-                        <div>
-                            <p style={{fontSize : "30px", fontWeight : '700'}}>
-                                TA Info.
-                            </p>
-                        </div>
+                    <div className = 'row' style = {{paddingTop : '27px', fontFamily : "Nanum Square"}}>
+                          <p style={{fontSize : "30px", fontWeight : '700'}}>
+                              TA Info.
+                          </p>
                     </div>
-                        <div style = {{fontSize : '17px', marginBottom : "20px", lineHeight : '150%', paddingLeft : '15%'}}>
+                    <div className = 'row'>
+                        <div style = {{fontSize : '17px', marginBottom : "25px"}}>
                                 * Teaching assistants are members of chemistry department.<br/>
                                 *TA's Office : Tel. 2893
                         </div>
-                   
-                    <div className= "row"  style = {{paddingLeft:'15%', paddingRight:'15%'}}>
+                    </div>
+                    <div className= "row"  style = {{paddingLeft:'5%', paddingRight:'5%'}}>
                         {card}
                     </div>
                 </div>

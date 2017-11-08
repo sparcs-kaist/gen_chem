@@ -12,7 +12,7 @@ const imgstyle ={
 }
 
 const card = {
-    maxWidth: '500px',
+    maxWidth: '350px',
     height : '140px',
     backgroundColor: '#EBEBEB',
     borderRadius: '30px',
