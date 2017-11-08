@@ -3,8 +3,17 @@
     font-family: "Nanum Square";
 }
 
+.subjectstyle {
+    font-family: "Nanum Square";
+    color: red;
+}
+
 @media only screen and (max-width: 480px) {
     .fontstyle {
         font-size: 15px;
+    }
+
+    .subjectstyle {
+        font-size: 30px;
     }
 }
