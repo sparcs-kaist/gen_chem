@@ -7,6 +7,7 @@ import UsefulLinks from "./UsefulLinks";
 import TAContact from "./TAContact";
 import Evaluation from './Evaluation';
 import SafetyRule from './SafetyRule';
+import Download from './Download';
 
 export default class CH102 extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ export default class CH102 extends Component {
         <div style={{paddingTop: 64}}>
           <Switch>
             <Route path='/ch102/notice' render={() => <Notice onPress={this.dropUp}/>} />
-            <Route path='/ch102/schedule' render={() => <div style={{height: 1080}}>Hi2</div>} />
+            <Route path='/ch102/schedule' render={() => <Download />} />
             <Route path='/ch102/evaluation' render={() => <Evaluation />} />
             <Route path='/ch102/safety' render={() => <SafetyRule />} />
             <Route path='/ch102/links' render={() => <div style={{minHeight: '100vh'}}><UsefulLinks /></div>} />

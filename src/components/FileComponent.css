@@ -1,0 +1,27 @@
+.file{
+    height : 160px;
+    width : 160px;
+    text-align: center;
+}
+.fileEmpty{
+    width : 160px;
+    height : 0px;
+    margin : auto;
+}
+.fileIcon {
+    height : 100px;
+}
+.fileName{
+    width : 100%;
+    white-space: nowrap;
+    overflow : hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    text-align : center;
+    margin-bottom : 0px;
+}
+@media only screen and (max-width: 420px) {
+    .file{
+        margin: auto;
+    }
+}
