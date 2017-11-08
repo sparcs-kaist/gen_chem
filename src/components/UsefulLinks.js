@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../grid.css';
 import '../Nanum.css';
-import './../UsefulLinks.css';
+import '../UsefulLinks.css';
 
 const realData  = [
     {title: "How to use beakers",

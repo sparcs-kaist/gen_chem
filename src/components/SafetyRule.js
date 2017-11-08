@@ -46,13 +46,13 @@ class SafetyRule extends Component {
     render() {
         return (
             <div class="section">
-                <div class="row" style={{paddingLeft:"15%",paddingRight:"15%",paddingTop:"30px"}}>
+                <div class="safety_row">
                     <div class="col span-3-of-3">
                         <h1 class="subjectstyle">Laboratory Safety</h1>
                         <p class="fontstyle">
                             {laboratory_safety.map((str) => {
                                 return (
-                                    <p>{str}</p>
+                                    <p class="entrystyle">{str}</p>
                                 )
                             })}
                         </p>
@@ -62,7 +62,7 @@ class SafetyRule extends Component {
                         <p class="fontstyle">
                             {basic_instructions.map((str) => {
                                 return (
-                                    <p>{str}</p>
+                                    <p class="entrystyle">{str}</p>
                                 )
                             })}
                         </p>

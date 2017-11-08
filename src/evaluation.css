@@ -8,6 +8,17 @@
     color: red;
 }
 
+.entrystyle {
+    font-size: 20px;
+    font-family: "Nanum Square";
+    padding-top: 10px;
+}
+
+.safety_row {
+    padding-right: 15%;
+    padding-left: 15%;
+}
+
 @media only screen and (max-width: 480px) {
     .fontstyle {
         font-size: 15px;
@@ -15,5 +26,15 @@
 
     .subjectstyle {
         font-size: 30px;
+    }
+
+    .entrystyle {
+        font-size: 15px;
+        padding-top: 0px;
+    }
+
+    .safety_row {
+        padding-left: 10%;
+        padding-right: 10%;
     }
 }
