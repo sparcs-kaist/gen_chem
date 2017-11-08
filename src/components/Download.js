@@ -74,7 +74,7 @@ function AllYear(){
 
     for (let [key, value] of fileMap){
         AllYear.push(
-            <div className="row">{OneYear(key, value)}</div>
+            <div className="row" style={{marginBottom: 96}}>{OneYear(key, value)}</div>
         );
     }
 
