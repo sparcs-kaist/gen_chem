@@ -1,0 +1,97 @@
+
+/*  SECTIONS  ============================================================================= */
+
+.section {
+    clear: both;
+    padding: 0px;
+    margin: 0px;
+}
+
+/*  GROUPING  ============================================================================= */
+
+.row {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+    padding: 0px 5%;
+}
+
+.row:before,
+.row:after {
+    content:"";
+    display:table;
+}
+.row:after {
+    clear:both;
+}
+
+/*  GRID COLUMN SETUP   ==================================================================== */
+
+.row {
+    max-width: 1080px;
+    margin: auto;
+    margin-bottom: 96px;
+}
+
+.col {
+    display: block;
+    float:left;
+}
+
+.span-2-of-8 {
+    width: 25%;
+    text-align: center;
+    margin: 0 !important;
+}
+
+.span-6-of-8 {
+    width: 75%;
+    margin: 0 !important;
+}
+.span-2-of-6{
+    margin-bottom : 1%;
+    width : 33.33%;
+    margin: 0 !important;
+}
+
+@media only screen and (max-width: 750px) {
+    .col.span-2-of-8 {
+        width: 33.33%;
+    }
+    .col.span-6-of-8 {
+        width: 66.66%;
+    }
+    .col.span-2-of-6 {
+        width: 50% !important;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .row{
+        margin-bottom: 48px;
+    }
+    .col.span-2-of-8 {
+        width: 100%;
+        margin-bottom: 1%;
+        text-align: left !important;
+    }
+    .col.span-6-of-8 {
+        width: 100%;
+    }
+    .aa{
+        margin : 0
+    }
+    .col.span-2-of-6 {
+        width: 33.33% !important;
+    }
+}
+
+@media only screen and (max-width: 515px) {
+    .col.span-2-of-6 {
+        width: 50% !important;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .col.span-2-of-6 {
+        width: 100% !important;
+    }
+}
