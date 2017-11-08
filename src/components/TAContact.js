@@ -11,8 +11,8 @@ const TAs = [
         photo: 'https://d1wn0q81ehzw6k.cloudfront.net/additional/thul/media/0eaa14d11e8930f5?w=400&h=400'
     },
     {
-        name: '전상빈',
-        email: 'snake6584@kaist.ac.kr',
+        name: '장영부',
+        email: 'wkd2102@kaist.ac.kr',
         lab: '2887',
         photo: 'http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png'
     },{
