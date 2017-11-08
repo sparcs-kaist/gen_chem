@@ -14,32 +14,31 @@ const TAs = [
         name: '장영부',
         email: 'wkd2102@kaist.ac.kr',
         lab: '2887',
-        photo: 'http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png'
-    },{
+       },{
         name: '윤영록',
         email: 'mememolly@kaist.ac.kr',
         lab: '2881',
-        photo: 'http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png'
+        
     },{
         name: '최혁준',
         email: 'royh0106@kaist.ac.kr',
         lab: '2875',
-        photo: 'http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png'
+       
     },{
         name: '박산하',
         email: 'dbsk9310@kaist.ac.kr',
         lab: '2856',
-        photo: 'http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png'
+        
     },{
         name: '소종호',
         email: 'kimsoun0107@kaist.ac.kr',
         lab: '2862',
-        photo: 'http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png'
+       
     },{
         name: '박수완',
         email: 'kimsoun0107@kaist.ac.kr',
         lab: '2862',
-        photo: 'http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png'
+        
     },{
         name: '김성종',
         email: 'kimsoun0107@kaist.ac.kr',
