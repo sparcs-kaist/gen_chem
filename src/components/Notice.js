@@ -54,7 +54,6 @@ class Notice extends Component {
 const styles = {
   containerStyle: {
     paddingTop: '54px',
-    paddingBottom: '48px'
   }
 };
 

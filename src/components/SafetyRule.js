@@ -40,7 +40,7 @@ var basic_instructions = [
     "12. When weighing, do not place chemicals directly on the balance.",
     "13. Do not weigh hot or warm obejects. Objects should be at room temperature.",
     "14. Do not put hot objects on the desktop. Place them on a wire gauze or heat-resistant pad."
-]
+];
 
 class SafetyRule extends Component {
     render() {
