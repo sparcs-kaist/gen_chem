@@ -35,7 +35,7 @@ class Evaluation extends Component {
 
     render() {
         return (
-            <div class="section">
+            <div class="section" style={{paddingBottom: 48}}>
                 <div class="row" style={{paddingLeft:"15%",paddingRight:"15%",paddingTop:"30px"}}>
                     <div class="col span-3-of-3">
                         <h1 class="subjectstyle">Grade</h1>
@@ -51,7 +51,7 @@ class Evaluation extends Component {
                         <p class="fontstyle">
                             One experiment = 100 pts
                         </p>
-                        <ol class="fontstyle">
+                        <ol class="fontstyle" style={{marginBottom: 0}}>
                             <li style={{paddingBottom:"10px"}}>
                                 Pre- and post- laboratory quizzes  (30 points)
                             </li>
