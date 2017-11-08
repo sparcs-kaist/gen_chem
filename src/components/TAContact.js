@@ -76,12 +76,12 @@ class TAContact extends Component {
                             </p>
                         </div>
                     </div>
-                        <div style = {{fontSize : '17px', marginBottom : "20px", lineHeight : '150%', paddingLeft : '10%'}}>
+                        <div style = {{fontSize : '17px', marginBottom : "20px", lineHeight : '150%', paddingLeft : '15%'}}>
                                 * Teaching assistants are members of chemistry department.<br/>
                                 *TA's Office : Tel. 2893
                         </div>
                    
-                    <div className= "row"  style = {{paddingLeft:'10%', paddingRight:'10%'}}>
+                    <div className= "row"  style = {{paddingLeft:'15%', paddingRight:'15%'}}>
                         {card}
                     </div>
                 </div>
