@@ -6,23 +6,23 @@ import React, { Component } from 'react';
 class Evaluation extends Component {
     render() {
         return (
-            <div class="section" style={{paddingBottom: 48}}>
-                <div class="safety_row">
-                    <div class="col span-3-of-3">
-                        <h1 class="subjectstyle">Grade</h1>
-                        <p class="fontstyle">
+            <div className="section" style={{paddingBottom: 48, paddingTop: 30}}>
+                <div className="row">
+                    <div className="col span-3-of-3">
+                        <h1 className="subjectstyle">Grade</h1>
+                        <p className="fontstyle">
                             Total 10 experiments X 100 pts = 1000 pts
                         </p>
-                        <p class="fontstyle">
+                        <p className="fontstyle">
                             A(45-50%), B (45%-50%), C-D (5%) per one class
                         </p>
                         <br />
 
-                        <h1 class="subjectstyle">Evaluation</h1>
-                        <p class="fontstyle">
+                        <h1 className="subjectstyle">Evaluation</h1>
+                        <p className="fontstyle">
                             One experiment = 100 pts
                         </p>
-                        <ol class="fontstyle" style={{marginBottom: 0}}>
+                        <ol className="fontstyle">
                             <li style={{paddingBottom:"10px"}}>
                                 Pre- and post- laboratory quizzes  (30 points)
                             </li>

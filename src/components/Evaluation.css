@@ -1,23 +1,19 @@
 .fontstyle {
     font-size: 20px;
-    font-family: "Nanum Square";
 }
 
 .subjectstyle {
-    font-family: "Nanum Square";
     color: red;
 }
 
 .entrystyle {
     font-size: 20px;
-    font-family: "Nanum Square";
     padding-top: 10px;
 }
 
 .safety_row {
     padding-right: 15%;
     padding-left: 15%;
-    padding-bottom: 20%;
 }
 
 @media only screen and (max-width: 480px) {
@@ -31,7 +27,7 @@
 
     .entrystyle {
         font-size: 15px;
-        padding-top: 0px;
+        padding-top: 0;
     }
 
     .safety_row {

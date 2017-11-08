@@ -40,16 +40,16 @@ var basic_instructions = [
     "12. When weighing, do not place chemicals directly on the balance.",
     "13. Do not weigh hot or warm obejects. Objects should be at room temperature.",
     "14. Do not put hot objects on the desktop. Place them on a wire gauze or heat-resistant pad."
-];
+]
 
 class SafetyRule extends Component {
     render() {
         return (
-            <div class="section">
-                <div class="safety_row">
-                    <div class="col span-3-of-3">
-                        <h1 class="subjectstyle">Laboratory Safety</h1>
-                        <p class="fontstyle">
+            <div className="section" style={{paddingBottom: 48, paddingTop: 30}}>
+                <div className="row">
+                    <div className="col span-3-of-3">
+                        <h1 className="subjectstyle">Laboratory Safety</h1>
+                        <p className="fontstyle">
                             {laboratory_safety.map((str) => {
                                 return (
                                     <p class="entrystyle">{str}</p>
@@ -58,11 +58,11 @@ class SafetyRule extends Component {
                         </p>
                         <br />
 
-                        <h1 class="subjectstyle">Basic Instructions</h1>
-                        <p class="fontstyle">
+                        <h1 className="subjectstyle">Basic Instructions</h1>
+                        <p className="fontstyle">
                             {basic_instructions.map((str) => {
                                 return (
-                                    <p class="entrystyle">{str}</p>
+                                    <p className="entrystyle">{str}</p>
                                 )
                             })}
                         </p>
