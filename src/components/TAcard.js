@@ -58,4 +58,8 @@ class TACard extends Component {
     }
 }
 
+TACard.defaultProps = {
+    img : 'http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png'
+}
+
 export default TACard;

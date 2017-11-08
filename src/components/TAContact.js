@@ -44,7 +44,6 @@ const TAs = [
         name: '김성종',
         email: 'kimsoun0107@kaist.ac.kr',
         lab: '2862',
-        photo: 'http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png'
     },
 ];
 
@@ -52,7 +51,6 @@ const TAs = [
 
 class TAContact extends Component {
     render() {
-
         const card = TAs.map((item) => {
             return (
                 <div className= "col span-3-of-9">
@@ -81,7 +79,7 @@ class TAContact extends Component {
                                 *TA's Office : Tel. 2893
                         </div>
                     </div>
-                    <div className= "row" style = {{paddingLeft : '5px', paddingRight:"5px"}}>
+                    <div className= "row" style = {{paddingLeft : '10%', paddingRight:"10%"}}>
                         {card}
                     </div>
                 </div>
