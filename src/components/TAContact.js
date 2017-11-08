@@ -61,25 +61,28 @@ class TAContact extends Component {
 
         const head = {
             width : '100%',
-            paddingLeft : '3%',
+            paddingLeft : '15%',
+            paddingRight : '15%',
+            paddingTop : "27px",
             fontFamily : 'Nanum Square'
         }
 
         return (
             <div>
-                <div className = 'section' style = {{paddingLeft:'20px', paddingRight:'20px'}}>
+                <div className = 'section' style = {{paddingBotton : "40px"}}>
                     <div style = {head}>
                         <div>
                             <p style={{fontSize : "30px", fontWeight : '700'}}>
                                 TA Info.
                             </p>
                         </div>
-                        <div style = {{fontSize : '17px0', marginBottom : "20px", lineHeight : '150%'}}>
+                    </div>
+                        <div style = {{fontSize : '17px', marginBottom : "20px", lineHeight : '150%', paddingLeft : '10%'}}>
                                 * Teaching assistants are members of chemistry department.<br/>
                                 *TA's Office : Tel. 2893
                         </div>
-                    </div>
-                    <div className= "row" style = {{paddingLeft : '10%', paddingRight:"10%"}}>
+                   
+                    <div className= "row"  style = {{paddingLeft:'10%', paddingRight:'10%'}}>
                         {card}
                     </div>
                 </div>
