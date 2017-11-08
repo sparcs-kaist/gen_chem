@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../grid.css';
 import '../Nanum.css';
-import '../UsefulLinks.css';
+import './UsefulLinks.css';
 
 const realData  = [
     {title: "How to use beakers",
@@ -14,24 +14,23 @@ const realData  = [
 
 function LinkList(props) {
     const data = props.data;
-    const listItem = data.map((link) =>
-        <div>
+    const listItem = data.map((link, index) =>
+        <div key={index} className="list-item">
             <div className="row" style={rowStyle}>
                 <div className = "col span-2-of-2">
                     <a href={link.link}>
-                        <p style={titleStyle}>{link.title}</p>
+                        <p className="title" style={titleStyle}>{link.title}</p>
                     </a>
                 </div>
             </div>
             <div className="row" style={rowStyle}>
                 <div className = "col span-2-of-2">
                     <a href={link.link}>
-                        <p style={descriptionStyle}>{link.description}</p>
+                        <p className="description" style={descriptionStyle}>{link.description}</p>
                     </a>
                 </div>
             </div>
         </div>
-
     );
     return <div>{listItem}</div>
 }
@@ -39,7 +38,7 @@ function LinkList(props) {
 class UsefulLinks extends Component{
     render () {
         return (
-            <div className="section">
+            <div className="section" style={sectionStyle}>
                 <LinkList data={realData} />
             </div>
         );
@@ -52,19 +51,23 @@ const rowStyle = {
 };
 
 const titleStyle = {
-    marginTop: '10px',
+    marginTop: '0px',
     marginBottom: '0px',
     textAlign: 'left',
-    fontSize: '50px',
     fontWeight: '600',
-};
+}
 
 const descriptionStyle = {
-    marginTop: '5px',
+    marginTop: '0px',
     marginBottom: '0px',
+    paddingLeft: '3px',
     textAlign: 'left',
-    fontSize: '30px',
     fontWeight: '400',
+};
+
+const sectionStyle = {
+  paddingTop: '54px',
+  paddingBottom: '48px'
 };
 
 export default UsefulLinks;
