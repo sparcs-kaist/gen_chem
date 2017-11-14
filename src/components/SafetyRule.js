@@ -52,7 +52,7 @@ class SafetyRule extends Component {
                         <p className="fontstyle">
                             {laboratory_safety.map((str) => {
                                 return (
-                                    <p class="entrystyle">{str}</p>
+                                    <p className="entrystyle">{str}</p>
                                 )
                             })}
                         </p>
