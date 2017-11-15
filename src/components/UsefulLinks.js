@@ -15,59 +15,71 @@ const realData  = [
     link: "google.com"}
 ];
 
-const LinkList = (props)  => {
-    const data = props.data;
-    const handler1 = props.onMouseEnter;
-    const handler2 = props.onMouseLeave;
+class LinkElem extends Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      hover: false
+    }
+    this.onHover = this.onHover.bind(this);
+    this.onLeave = this.onLeave.bind(this);
+  }
 
-    const listItem = data.map((link, index) =>
-        <div key={index} className="list-item" onMouseEnter={handler1} onMouseLeave={handler2}>
-            <div className="row" style={{...rowStyle, color: (props.state) ? '#888888': '#000000' }}>
-                <div className = "col span-2-of-2">
-                    <a href={link.link}>
-                        <p className="title" style={titleStyle}>{link.title}</p>
-                    </a>
-                </div>
-            </div>
-            <div className="row" style={rowStyle}>
-                <div className = "col span-2-of-2">
-                    <a href={link.link}>
-                        <p className="description" style={descriptionStyle}>{link.description}</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-    );
-    return <div>{listItem}</div>
+  onHover () {
+    this.setState({
+      hover: true
+    })
+  }
+
+  onLeave () {
+    this.setState({
+      hover: false
+    })
+  }
+
+  render () {
+    return (<div className="list-item" onMouseEnter={() => this.onHover()} onMouseLeave={()=> this.onLeave()} style={{ opacity: this.state.hover ? 0.7 : 1 }}>
+          <div className="row" style={{...rowStyle }}>
+              <div className = "col span-2-of-2">
+                  <a href={this.props.link}>
+                      <p className="title" style={titleStyle}>{this.props.title}</p>
+                  </a>
+              </div>
+          </div>
+          <div className="row" style={rowStyle}>
+              <div className = "col span-2-of-2">
+                  <a href={this.props.link}>
+                      <p className="description" style={descriptionStyle}>{this.props.description}</p>
+                  </a>
+              </div>
+          </div>
+      </div>);
+  }
+}
+
+class LinkList extends Component {
+
+    render () {
+      const data = this.props.data;
+
+      const listItem = data.map((link, index) =>
+
+        <LinkElem key={index} link = {link.link} title = {link.title} description = {link.description} />
+      );
+      return <div>{listItem}</div>
+    }
+
 }
 
 class UsefulLinks extends Component{
     constructor(props) {
         super(props);
-        this.state = {
-            hovered: false
-        };
-
-        this.OnMouseEnterHandler = this.OnMouseEnterHandler.bind(this);
-        this.OnMouseLeaveHandler = this.OnMouseLeaveHandler.bind(this);
-    }
-
-    OnMouseEnterHandler() {
-        this.setState({
-            hovered: true
-        });
-    }
-
-    OnMouseLeaveHandler() {
-        this.setState({
-            hovered: false
-        });
     }
 
     render () {
         return (
             <div className="section" style={sectionStyle}>
-                <LinkList state={this.state.hovered} onMouseEnter={this.OnMouseEnterHandler} onMouseLeave={this.OnMouseLeaveHandler} data={realData} />
+                <LinkList data={realData} />
             </div>
         );
     }
