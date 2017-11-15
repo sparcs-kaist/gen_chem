@@ -10,13 +10,19 @@ const realData  = [
     {title: "General Chemistry Introduction",
     description: "Intro to genchem in 5 seconds",
     link: "klms.kaist.ac.kr"},
+    {title: "Whatever video you want",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    link: "google.com"}
 ];
 
-function LinkList(props) {
+const LinkList = (props)  => {
     const data = props.data;
+    const handler1 = props.onMouseEnter;
+    const handler2 = props.onMouseLeave;
+
     const listItem = data.map((link, index) =>
-        <div key={index} className="list-item">
-            <div className="row" style={rowStyle}>
+        <div key={index} className="list-item" onMouseEnter={handler1} onMouseLeave={handler2}>
+            <div className="row" style={{...rowStyle, color: (props.state) ? '#888888': '#000000' }}>
                 <div className = "col span-2-of-2">
                     <a href={link.link}>
                         <p className="title" style={titleStyle}>{link.title}</p>
@@ -36,10 +42,32 @@ function LinkList(props) {
 }
 
 class UsefulLinks extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            hovered: false
+        };
+
+        this.OnMouseEnterHandler = this.OnMouseEnterHandler.bind(this);
+        this.OnMouseLeaveHandler = this.OnMouseLeaveHandler.bind(this);
+    }
+
+    OnMouseEnterHandler() {
+        this.setState({
+            hovered: true
+        });
+    }
+
+    OnMouseLeaveHandler() {
+        this.setState({
+            hovered: false
+        });
+    }
+
     render () {
         return (
             <div className="section" style={sectionStyle}>
-                <LinkList data={realData} />
+                <LinkList state={this.state.hovered} onMouseEnter={this.OnMouseEnterHandler} onMouseLeave={this.OnMouseLeaveHandler} data={realData} />
             </div>
         );
     }
@@ -48,6 +76,7 @@ class UsefulLinks extends Component{
 const rowStyle = {
     fontFamily: 'Nanum Square',
     cursor: 'pointer',
+    color: 'black',
 };
 
 const titleStyle = {
@@ -55,7 +84,7 @@ const titleStyle = {
     marginBottom: '0px',
     textAlign: 'left',
     fontWeight: '600',
-}
+};
 
 const descriptionStyle = {
     marginTop: '0px',
