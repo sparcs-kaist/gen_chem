@@ -10,8 +10,7 @@ const Info = ({match}) => {
 };
 
 const style = {
-    width : "300px",
-    height : "600px",
+    height : "300px",
     backgroundColor:"gray"
 }
 

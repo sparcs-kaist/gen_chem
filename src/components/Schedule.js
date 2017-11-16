@@ -110,7 +110,7 @@ const day  = {
 const Calander = Days.map((item)=> {
         return (
             <div>
-                <Link to={'${match.url}/1'}>
+                <Link to={'/ch102/schedule/{item.Day}'}>
                     <div style={day}>
                         {item.Day}
                     </div>
@@ -131,7 +131,7 @@ const Schedule = ({match}) => {
                     {Calander}
                 </div>
                 <div className="col span-4-of-12">
-                    <Route path={'${match.url}/:id'} component={Info}/>
+                    <Route path={'/ch102/schedule/:id'} component={Info}/>
                 </div>
             </div>
         </div>
