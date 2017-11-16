@@ -1,32 +1,141 @@
 import React, { Component } from 'react';
-import {Route} from 'react-router-dom';
+import {Link, Route} from 'react-router-dom';
 import '../grid.css';
-import '../Schedule.css'
+import Info from './Info.js';
 
-Days = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+const Days = [
+    {
+        Day : "1",
+        info: "Nothing"
+    },
+    {
+        Day : "2",
+        info : "Also nothing"
+    },{
+        Day : "3",
+        info: "Nothing"
+    },
+    {
+        Day : "4",
+        info : "Also nothing"
+    },{
+        Day : "5",
+        info: "Nothing"
+    },
+    {
+        Day : "6",
+        info : "Also nothing"
+    },{
+        Day : "7",
+        info: "Nothing"
+    },
+    {
+        Day : "8",
+        info : "Also nothing"
+    },{
+        Day : "9",
+        info: "Nothing"
+    },
+    {
+        Day : "10",
+        info : "Also nothing"
+    },{
+        Day : "11",
+        info: "Nothing"
+    },
+    {
+        Day : "12",
+        info : "Also nothing"
+    },{
+        Day : "13",
+        info: "Nothing"
+    },
+    {
+        Day : "14",
+        info : "Also nothing"
+    },{
+        Day : "15",
+        info: "Nothing"
+    },
+    {
+        Day : "16",
+        info : "Also nothing"
+    },{
+        Day : "17",
+        info: "Nothing"
+    },
+    {
+        Day : "18",
+        info : "Also nothing"
+    },{
+        Day : "19",
+        info: "Nothing"
+    },
+    {
+        Day : "20",
+        info : "Also nothing"
+    },{
+        Day : "21",
+        info: "Nothing"
+    },
+    {
+        Day : "22",
+        info : "Also nothing"
+    },{
+        Day : "23",
+        info: "Nothing"
+    },
+    {
+        Day : "24",
+        info : "Also nothing"
+    },{
+        Day : "25",
+        info: "Nothing"
+    },
+    {
+        Day : "26",
+        info : "Also nothing"
+    }
+]
+
+const day  = {
+    width : '13.5%',
+    height : "50px",
+    backgroundColor: "lightgray",
+    margin : "1px",
+    float : 'left'
+}
+
 
 const Calander = Days.map((item)=> {
         return (
-            <div className="day">
-                <Link to="../schedulei">item</Link>
+            <div>
+                <Link to={'${match.url}/1'}>
+                    <div style={day}>
+                        {item.Day}
+                    </div>
+                </Link>
+                <div style={{display : 'none'}}>
+                    {item.info}
+                </div>
             </div>
         );
     }
 )
 
-class SChedule extends Component {
-    render() {
-        return (
-            <div className = "section">
-                <div className = "row">
-                    <div className = "col span-2-of-3">
-                        {Calander}
-                    </div>
-                    <div className="col span-1-of-3">
-                            <Route path="/about" component={Info}/>
-                    </div>
+const Schedule = ({match}) => {
+    return (
+        <div className = "section">
+            <div className = "row">
+                <div className = "col span-8-of-12">
+                    {Calander}
+                </div>
+                <div className="col span-4-of-12">
+                    <Route path={'${match.url}/:id'} component={Info}/>
                 </div>
             </div>
-        )
-    }
-}
+        </div>
+    );
+};
+
+export default Schedule;
