@@ -10,8 +10,10 @@ const Info = ({match}) => {
 };
 
 const style = {
-    height : "300px",
-    backgroundColor:"gray"
+    height : "250px",
+    paddingTop : "50px",
+    paddingLeft : "50px"
+,    backgroundColor:"lightgray"
 }
 
 export default Info;

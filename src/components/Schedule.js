@@ -99,18 +99,19 @@ const Days = [
 ]
 
 const day  = {
-    width : '13.5%',
-    height : "50px",
+    width : '13%',
+    height : "70px",
     backgroundColor: "lightgray",
     margin : "1px",
+    paddingTop : "10px",
+    paddingLeft : "10px",
     float : 'left'
 }
-
 
 const Calander = Days.map((item)=> {
         return (
             <div>
-                <Link to={'/ch102/schedule/{item.Day}'}>
+                <Link to={'/ch102/schedule/' + item.Day}>
                     <div style={day}>
                         {item.Day}
                     </div>
@@ -131,7 +132,7 @@ const Schedule = ({match}) => {
                     {Calander}
                 </div>
                 <div className="col span-4-of-12">
-                    <Route path={'/ch102/schedule/:id'} component={Info}/>
+                    <Route path={'/ch102/schedule/:id'} component = {Info} />
                 </div>
             </div>
         </div>
