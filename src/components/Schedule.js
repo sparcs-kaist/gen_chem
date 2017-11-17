@@ -119,7 +119,7 @@ const Days = [
 ]
 
 const day  = {
-    width : '13.9%',
+    width : '13.8%',
     height : "70px",
     /*backgroundColor: "lightgray",*/
     margin : "1px",
@@ -149,7 +149,7 @@ const dayweek = ['Sun', 'Mon', 'Tue', 'Wed', "Thu", "Fri", "Sat"]
 
 const dayofweek = dayweek.map((item)=>{
 	return (
-		<div style = {{width : '13.9%', height : '30px', fontSize : '10pt', lineHeight : '30px', margin :'1px', float : 'left', textAlign : 'center'}}>
+		<div style = {{width : '13.8%', height : '30px', fontSize : '10pt', lineHeight : '30px', margin :'1px', float : 'left', textAlign : 'center'}}>
 			{item}
 		</div>
 	);
@@ -158,7 +158,7 @@ const dayofweek = dayweek.map((item)=>{
 const Schedule = ({match}) => {
     return (
         <div className = "section">
-            <div className = "row">
+            <div className = "row" style = {{marginTop : '80px'}}>
                 <div className = "col span-8-of-12">
                     {dayofweek}
                     {Calander}
