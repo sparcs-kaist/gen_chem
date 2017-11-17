@@ -95,17 +95,38 @@ const Days = [
     {
         Day : "26",
         info : "Also nothing"
+    },
+    {
+        Day : "27",
+        info : "Also nothing"
+    },
+    {
+        Day : "28",
+        info : "Also nothing"
+    },
+    {
+        Day : "29",
+        info : "Also nothing"
+    },
+    {
+        Day : "30",
+        info : "Also nothing"
+    },
+    {
+        Day : "31",
+        info : "Also nothing"
     }
 ]
 
 const day  = {
-    width : '13%',
+    width : '13.9%',
     height : "70px",
-    backgroundColor: "lightgray",
+    /*backgroundColor: "lightgray",*/
     margin : "1px",
-    paddingTop : "10px",
-    paddingLeft : "10px",
-    float : 'left'
+    textAlign : "center",
+    fontSize : "20pt",
+    float : 'left',
+    lineHeight : "70px"
 }
 
 const Calander = Days.map((item)=> {
@@ -124,15 +145,26 @@ const Calander = Days.map((item)=> {
     }
 )
 
+const dayweek = ['Sun', 'Mon', 'Tue', 'Wed', "Thu", "Fri", "Sat"]
+
+const dayofweek = dayweek.map((item)=>{
+	return (
+		<div style = {{width : '13.9%', height : '30px', fontSize : '10pt', lineHeight : '30px', margin :'1px', float : 'left', textAlign : 'center'}}>
+			{item}
+		</div>
+	);
+})
+
 const Schedule = ({match}) => {
     return (
         <div className = "section">
             <div className = "row">
                 <div className = "col span-8-of-12">
+                    {dayofweek}
                     {Calander}
                 </div>
                 <div className="col span-4-of-12">
-                    <Route path={'/ch102/schedule/:id'} component = {Info} />
+                    <Route path={'/ch102/schedule/:id'} component={Info} />
                 </div>
             </div>
         </div>
