@@ -1,0 +1,23 @@
+.style {
+	height : 250px;
+	margin-top : 35px;
+	padding-top : 50px;
+}
+
+@media only screen and (max-width : 900px){
+	.style {
+		display : none;
+	}
+}
+/*---------------*/
+
+.bar {
+	width : 10px;
+	float : left;
+}
+
+@media only screen and (max-width : 900px) {
+	.bar {
+		display: none;
+	}
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Link, Route} from 'react-router-dom';
 import '../grid.css';
 import Info from './Info.js';
+import './infostyle.css';
 
 const Days = [
     {
@@ -163,7 +164,8 @@ const Schedule = ({match}) => {
                     {dayofweek}
                     {Calander}
                 </div>
-                <div className="col span-4-of-12">
+                <img src='https://goo.gl/CTk1PE' className = "bar"/>
+                <div className="col span-3-of-12">
                     <Route path={'/ch102/schedule/:id'} component={Info} />
                 </div>
             </div>
