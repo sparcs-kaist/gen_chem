@@ -4,120 +4,63 @@ import '../grid.css';
 import Info from './Info.js';
 import './infostyle.css';
 
-const Days = [
-    {
-        Day : "1",
-        info: "Nothing"
-    },
-    {
-        Day : "2",
-        info : "Also nothing"
-    },{
-        Day : "3",
-        info: "Nothing"
-    },
-    {
-        Day : "4",
-        info : "Also nothing"
-    },{
-        Day : "5",
-        info: "Nothing"
-    },
-    {
-        Day : "6",
-        info : "Also nothing"
-    },{
-        Day : "7",
-        info: "Nothing"
-    },
-    {
-        Day : "8",
-        info : "Also nothing"
-    },{
-        Day : "9",
-        info: "Nothing"
-    },
-    {
-        Day : "10",
-        info : "Also nothing"
-    },{
-        Day : "11",
-        info: "Nothing"
-    },
-    {
-        Day : "12",
-        info : "Also nothing"
-    },{
-        Day : "13",
-        info: "Nothing"
-    },
-    {
-        Day : "14",
-        info : "Also nothing"
-    },{
-        Day : "15",
-        info: "Nothing"
-    },
-    {
-        Day : "16",
-        info : "Also nothing"
-    },{
-        Day : "17",
-        info: "Nothing"
-    },
-    {
-        Day : "18",
-        info : "Also nothing"
-    },{
-        Day : "19",
-        info: "Nothing"
-    },
-    {
-        Day : "20",
-        info : "Also nothing"
-    },{
-        Day : "21",
-        info: "Nothing"
-    },
-    {
-        Day : "22",
-        info : "Also nothing"
-    },{
-        Day : "23",
-        info: "Nothing"
-    },
-    {
-        Day : "24",
-        info : "Also nothing"
-    },{
-        Day : "25",
-        info: "Nothing"
-    },
-    {
-        Day : "26",
-        info : "Also nothing"
-    },
-    {
-        Day : "27",
-        info : "Also nothing"
-    },
-    {
-        Day : "28",
-        info : "Also nothing"
-    },
-    {
-        Day : "29",
-        info : "Also nothing"
-    },
-    {
-        Day : "30",
-        info : "Also nothing"
-    },
-    {
-        Day : "31",
-        info : "Also nothing"
+function getNextMonth(month) {
+    if (month == 12)
+        return 1;
+
+    return month+1;
+}
+
+function getDaysofMonth(year, month) {
+    if (month == 2) {
+        if (year%4 == 0) return 29;
+        else return 28;
     }
-]
+
+    if (month < 8) {
+        if (month%2 == 0) return 30;
+        else return 31;
+    }
+
+    if (month%2 == 0) return 31;
+    return 30;
+}
+
+function getFirstDay(year, month) {
+    var days = 1;
+
+    days += (year-1900)*365;
+    days += parseInt((year-1900)/4);
+    if (month < 3 && year%4 == 0) days -= 1;
+
+    for (var i=1;i<month;i++) {
+        days += getDaysofMonth(year,i);
+    }
+
+    return days%7;
+}
+
+function getCalendar(year, month) {
+    var days = [];
+    var firstDay = getFirstDay(year, month);
+
+    var i;
+    for (var i=0;i<firstDay;i++) {
+        days.push({
+            Day : "",
+            info : "Nothing"
+        });
+    }
+
+    for (i=1;i<=getDaysofMonth(year, month);i++) {
+        days.push({
+            Day : i.toString(),
+            info : "Nothing"
+        })
+    }
+
+    return days;
+}
 
 const day  = {
     width : '13.8%',
@@ -130,7 +73,7 @@ const day  = {
     lineHeight : "70px"
 }
 
-const Calander = Days.map((item)=> {
+const Calander = getCalendar(2017,11).map((item)=> {
         return (
             <div>
                 <Link to={'/ch102/schedule/' + item.Day}>
