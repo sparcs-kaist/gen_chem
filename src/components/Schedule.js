@@ -4,11 +4,27 @@ import '../grid.css';
 import Info from './Info.js';
 import './infostyle.css';
 
+var today = new Date();
+var todayYear = today.getFullYear();
+var todayMonth = today.getMonth()+1;
+var todayDate = today.getDate();
+
+var currYear = todayYear;
+var currMonth = todayMonth;
+var currDate = todayDate;
+
 function getNextMonth(month) {
     if (month == 12)
         return 1;
 
     return month+1;
+}
+
+function getPrevMonth(month) {
+    if (month == 1)
+        return 12;
+
+    return month-1;
 }
 
 function getDaysofMonth(year, month) {
@@ -43,24 +59,43 @@ function getFirstDay(year, month) {
 function getCalendar(year, month) {
     var days = [];
     var firstDay = getFirstDay(year, month);
+    var dayNum = getDaysofMonth(year, month);
+    var prevMonth = getPrevMonth(year, month);
 
     var i;
-    for (var i=0;i<firstDay;i++) {
+    var cnt = 0;
+    for (i=0;i<firstDay;i++) {
+        var prevDay = getDaysofMonth(year,prevMonth)-firstDay+i+1;
         days.push({
-            Day : "",
-            info : "Nothing"
+            Day : prevDay.toString(),
+            info : "Nothing",
+            stat : "prev"
         });
+        cnt++;
     }
 
-    for (i=1;i<=getDaysofMonth(year, month);i++) {
+    for (i=1;i<=dayNum;i++) {
         days.push({
             Day : i.toString(),
-            info : "Nothing"
+            info : "Nothing",
+            stat : "curr"
+        })
+        cnt++;
+    }
+
+    var leftDay = (parseInt(cnt/7)+1)*7 - cnt;
+    for (i=1;i<=leftDay;i++) {
+        days.push({
+            Day : i.toString(),
+            info : "Nothing",
+            stat : "next"
         })
     }
 
     return days;
 }
+
+var currCalendar = getCalendar(currYear,currMonth)
 
 const day  = {
     width : '13.8%',
@@ -73,13 +108,30 @@ const day  = {
     lineHeight : "70px"
 }
 
-const Calander = getCalendar(2017,11).map((item)=> {
+const notCurrday  = {
+    width : '13.8%',
+    height : "70px",
+    /*backgroundColor: "lightgray",*/
+    margin : "1px",
+    textAlign : "center",
+    fontSize : "20pt",
+    float : 'left',
+    lineHeight : "70px",
+    color : "#C2C2C2"
+}
+
+const Calander = currCalendar.map((item)=> {
         return (
             <div>
                 <Link to={'/ch102/schedule/' + item.Day}>
-                    <div style={day}>
-                        {item.Day}
-                    </div>
+                    {item.stat=="curr"?
+                        <div style={day}>
+                            {item.Day}
+                        </div> :
+                        <div style={notCurrday}>
+                            {item.Day}
+                        </div>
+                    }
                 </Link>
                 <div style={{display : 'none'}}>
                     {item.info}
