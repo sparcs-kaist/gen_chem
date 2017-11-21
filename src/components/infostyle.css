@@ -21,3 +21,22 @@
 		display: none;
 	}
 }
+
+/*-------*/
+
+.dayofweek {
+	width : 13.8%;
+	height : 30px;
+	font-size : 10pt;
+	line-height: 30px;
+	margin : 1px;
+	float : left;
+	text-align: center;
+}
+
+.month {
+	font-size : 35pt;
+	font-weight : 700;
+	margin : 0 auto;
+	text-align: center;
+}

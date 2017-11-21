@@ -3,6 +3,9 @@ import {Link, Route} from 'react-router-dom';
 import '../grid.css';
 import Info from './Info.js';
 import './infostyle.css';
+import left from './img/left.png'
+import right from './img/right.png'
+
 
 var today = new Date();
 var todayYear = today.getFullYear();
@@ -83,7 +86,7 @@ function getDayList(year, month) {
         cnt++;
     }
 
-    var leftDay = (parseInt(cnt/7)+1)*7 - cnt;
+    var leftDay = 42 - cnt  ;
     for (i=1;i<=leftDay;i++) {
         days.push({
             Day : i.toString(),
@@ -150,7 +153,7 @@ const dayweek = ['Sun', 'Mon', 'Tue', 'Wed', "Thu", "Fri", "Sat"];
 
 const dayofweek = dayweek.map((item)=>{
 	return (
-		<div style = {{width : '13.8%', height : '30px', fontSize : '10pt', lineHeight : '30px', margin :'1px', float : 'left', textAlign : 'center'}}>
+		<div className = "dayofweek">
 			{item}
 		</div>
 	);
@@ -211,14 +214,22 @@ class Schedule extends Component {
     render () {
         return (
             <div className = "section">
-                <div className = "row" style = {{marginTop : '80px'}}>
+                <div className = "row" style = {{marginTop : '40px'}}>
                     <div className = "col span-8-of-12">
-                        <button onClick={this.nextCalendar}>
-                            next
-                        </button>
-                        <button onClick={this.prevCalendar}>
-                            prev
-                        </button>
+                        <div className ="row" style = {{fontSize :'14px', width : '90%', textAlign : 'center', marginBottom : '10px'}}>
+                            {this.state.Year}
+                        </div>
+                        <div className = "row" style = {{marginBottom : '30px'}}>
+                            <div style = {{float:'left'}} onClick={this.prevCalendar}>
+                                <img src={left} style={{width : '15px', marginTop :'5px'}}/>
+                            </div>
+                            <div style = {{float : "right"}} onClick={this.nextCalendar}>
+                                <img src={right} style={{width : '15px', marginTop :'5px'}}/>
+                            </div>
+                            <div className = "month">
+                                {this.state.Month}
+                            </div>
+                        </div>
                         {dayofweek}
                         {this.state.Calendar}
                     </div>
