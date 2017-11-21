@@ -233,7 +233,9 @@ class Schedule extends Component {
                         {dayofweek}
                         {this.state.Calendar}
                     </div>
-                    <img src='https://goo.gl/CTk1PE' className = "bar"/>
+                    <div style = {{height : '100%'}}>
+                        <img src='https://goo.gl/CTk1PE' className = "bar"/>
+                    </div>
                     <div className="col span-3-of-12">
                         <Route path={'/ch102/schedule/:id'} component={Info} />
                     </div>
