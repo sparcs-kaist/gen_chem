@@ -101,7 +101,7 @@ function getDayList(year, month) {
 var currDayList = getDayList(currYear,currMonth)
 
 const day  = {
-    width : '13.8%',
+    width : '13.5%',
     height : "70px",
     /*backgroundColor: "lightgray",*/
     margin : "1px",
@@ -112,7 +112,7 @@ const day  = {
 }
 
 const notCurrday  = {
-    width : '13.8%',
+    width : '13.5%',
     height : "70px",
     /*backgroundColor: "lightgray",*/
     margin : "1px",
