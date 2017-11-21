@@ -56,7 +56,7 @@ function getFirstDay(year, month) {
     return days%7;
 }
 
-function getCalendar(year, month) {
+function getDayList(year, month) {
     var days = [];
     var firstDay = getFirstDay(year, month);
     var dayNum = getDaysofMonth(year, month);
@@ -95,7 +95,7 @@ function getCalendar(year, month) {
     return days;
 }
 
-var currCalendar = getCalendar(currYear,currMonth)
+var currDayList = getDayList(currYear,currMonth)
 
 const day  = {
     width : '13.8%',
@@ -120,28 +120,33 @@ const notCurrday  = {
     color : "#C2C2C2"
 }
 
-const Calander = currCalendar.map((item)=> {
-        return (
-            <div>
-                <Link to={'/ch102/schedule/' + item.Day}>
-                    {item.stat=="curr"?
-                        <div style={day}>
-                            {item.Day}
-                        </div> :
-                        <div style={notCurrday}>
-                            {item.Day}
-                        </div>
-                    }
-                </Link>
-                <div style={{display : 'none'}}>
-                    {item.info}
+function makeCalendar (year, month) {
+    var dayList = getDayList(year, month);
+    var Calendar = dayList.map((item)=> {
+            return (
+                <div>
+                    <Link to={'/ch102/schedule/' + item.Day}>
+                        {item.stat=="curr"?
+                            <div style={day}>
+                                {item.Day}
+                            </div> :
+                            <div style={notCurrday}>
+                                {item.Day}
+                            </div>
+                        }
+                    </Link>
+                    <div style={{display : 'none'}}>
+                        {item.info}
+                    </div>
                 </div>
-            </div>
-        );
-    }
-)
+            );
+        }
+    )
 
-const dayweek = ['Sun', 'Mon', 'Tue', 'Wed', "Thu", "Fri", "Sat"]
+    return Calendar;
+}
+
+const dayweek = ['Sun', 'Mon', 'Tue', 'Wed', "Thu", "Fri", "Sat"];
 
 const dayofweek = dayweek.map((item)=>{
 	return (
@@ -149,23 +154,82 @@ const dayofweek = dayweek.map((item)=>{
 			{item}
 		</div>
 	);
-})
+});
 
-const Schedule = ({match}) => {
-    return (
-        <div className = "section">
-            <div className = "row" style = {{marginTop : '80px'}}>
-                <div className = "col span-8-of-12">
-                    {dayofweek}
-                    {Calander}
-                </div>
-                <img src='https://goo.gl/CTk1PE' className = "bar"/>
-                <div className="col span-3-of-12">
-                    <Route path={'/ch102/schedule/:id'} component={Info} />
+class Schedule extends Component {
+    constructor(props){
+        super(props);
+
+        var today = new Date();
+        var currYear = today.getFullYear();
+        var currMonth = today.getMonth()+1;
+        var currCalendar = makeCalendar(currYear, currMonth);
+
+        this.state = {
+            Today : today,
+            Year : currYear,
+            Month : currMonth,
+            Calendar : currCalendar
+        };
+
+        this.nextCalendar = this.nextCalendar.bind(this);
+        this.prevCalendar = this.prevCalendar.bind(this);
+    }
+
+    prevCalendar () {
+        var prevMonth = this.state.Month;
+        var prevYear = this.state.Year;
+        var prevCalendar = this.state.Calendar;
+        if (this.state.Month == 1)
+            prevYear -= 1;
+        prevMonth = getPrevMonth(prevMonth);
+        prevCalendar = makeCalendar(prevYear,prevMonth);
+
+        this.setState (prevState => ({
+            Month : prevMonth,
+            Year : prevYear,
+            Calendar : prevCalendar
+        }));
+    }
+
+    nextCalendar () {
+        var nextMonth = this.state.Month;
+        var nextYear = this.state.Year;
+        var nextCalendar = this.state.Calendar;
+        if (this.state.Month == 12)
+            nextYear += 1;
+        nextMonth = getNextMonth(nextMonth);
+        nextCalendar = makeCalendar(nextYear,nextMonth);
+
+        this.setState (prevState => ({
+            Month : nextMonth,
+            Year : nextYear,
+            Calendar : nextCalendar
+        }));
+    }
+
+    render () {
+        return (
+            <div className = "section">
+                <div className = "row" style = {{marginTop : '80px'}}>
+                    <div className = "col span-8-of-12">
+                        <button onClick={this.nextCalendar}>
+                            next
+                        </button>
+                        <button onClick={this.prevCalendar}>
+                            prev
+                        </button>
+                        {dayofweek}
+                        {this.state.Calendar}
+                    </div>
+                    <img src='https://goo.gl/CTk1PE' className = "bar"/>
+                    <div className="col span-3-of-12">
+                        <Route path={'/ch102/schedule/:id'} component={Info} />
+                    </div>
                 </div>
             </div>
-        </div>
-    );
-};
+        );
+    }
+}
 
 export default Schedule;
