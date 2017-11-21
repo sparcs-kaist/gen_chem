@@ -12,10 +12,6 @@ var todayYear = today.getFullYear();
 var todayMonth = today.getMonth()+1;
 var todayDate = today.getDate();
 
-var currYear = todayYear;
-var currMonth = todayMonth;
-var currDate = todayDate;
-
 function getNextMonth(month) {
     if (month == 12)
         return 1;
@@ -98,10 +94,8 @@ function getDayList(year, month) {
     return days;
 }
 
-var currDayList = getDayList(currYear,currMonth)
-
 const day  = {
-    width : '14.2%',
+    width : '14%',
     height : "70px",
     /*backgroundColor: "lightgray",*/
     textAlign : "center",
@@ -112,7 +106,7 @@ const day  = {
 }
 
 const notCurrday  = {
-    width : '14.2%',
+    width : '14%',
     height : "70px",
     /*backgroundColor: "lightgray",*/
     marginTop : '1px',
@@ -123,40 +117,14 @@ const notCurrday  = {
     color : "#C2C2C2"
 }
 
-function makeCalendar (year, month) {
-    var dayList = getDayList(year, month);
-    var Calendar = dayList.map((item)=> {
-            return (
-                <div>
-                    <Link to={'/ch102/schedule/' + item.Day}>
-                        {item.stat=="curr"?
-                            <div style={day}>
-                                {item.Day}
-                            </div> :
-                            <div style={notCurrday}>
-                                {item.Day}
-                            </div>
-                        }
-                    </Link>
-                    <div style={{display : 'none'}}>
-                        {item.info}
-                    </div>
-                </div>
-            );
-        }
-    )
-
-    return Calendar;
-}
-
 const dayweek = ['Sun', 'Mon', 'Tue', 'Wed', "Thu", "Fri", "Sat"];
 
 const dayofweek = dayweek.map((item)=>{
-	return (
-		<div className = "dayofweek">
-			{item}
-		</div>
-	);
+    return (
+        <div className = "dayofweek">
+            {item}
+        </div>
+    );
 });
 
 class Schedule extends Component {
@@ -166,13 +134,12 @@ class Schedule extends Component {
         var today = new Date();
         var currYear = today.getFullYear();
         var currMonth = today.getMonth()+1;
-        var currCalendar = makeCalendar(currYear, currMonth);
 
         this.state = {
             Today : today,
             Year : currYear,
             Month : currMonth,
-            Calendar : currCalendar
+            Post : "No Post"
         };
 
         this.nextCalendar = this.nextCalendar.bind(this);
@@ -182,36 +149,56 @@ class Schedule extends Component {
     prevCalendar () {
         var prevMonth = this.state.Month;
         var prevYear = this.state.Year;
-        var prevCalendar = this.state.Calendar;
         if (this.state.Month == 1)
             prevYear -= 1;
         prevMonth = getPrevMonth(prevMonth);
-        prevCalendar = makeCalendar(prevYear,prevMonth);
 
-        this.setState (prevState => ({
+        this.setState ({
             Month : prevMonth,
-            Year : prevYear,
-            Calendar : prevCalendar
-        }));
+            Year : prevYear
+        });
     }
 
     nextCalendar () {
         var nextMonth = this.state.Month;
         var nextYear = this.state.Year;
-        var nextCalendar = this.state.Calendar;
         if (this.state.Month == 12)
             nextYear += 1;
         nextMonth = getNextMonth(nextMonth);
-        nextCalendar = makeCalendar(nextYear,nextMonth);
 
-        this.setState (prevState => ({
+        this.setState ({
             Month : nextMonth,
-            Year : nextYear,
-            Calendar : nextCalendar
-        }));
+            Year : nextYear
+        });
+    }
+
+    setPost (post) {
+        this.setState ({
+            Post : post
+        })
     }
 
     render () {
+        var dayList = getDayList(this.state.Year, this.state.Month);
+        var Calendar = dayList.map((item)=> {
+                return (
+                    <div>
+                        {item.stat=="curr"?
+                            <div style={day} onClick={this.setPost.bind(this, item.info)}>
+                                {item.Day}
+                            </div> :
+                            <div style={notCurrday}>
+                                {item.Day}
+                            </div>
+                        }
+                        <div style={{display : 'none'}}>
+                            {item.info}
+                        </div>
+                    </div>
+                );
+            }
+        )
+
         return (
             <div className = "section">
                 <div className = "row" style = {{marginTop : '40px'}}>
@@ -221,23 +208,24 @@ class Schedule extends Component {
                         </div>
                         <div className = "row" style = {{marginBottom : '30px'}}>
                             <div style = {{float:'left'}} onClick={this.prevCalendar}>
-                                <img src={left} style={{width : '11px', marginTop :'12px'}}/>
+                                <img src={left} style={{width : '15px', marginTop :'5px'}}/>
                             </div>
                             <div style = {{float : "right"}} onClick={this.nextCalendar}>
-                                <img src={right} style={{width : '11px', marginTop :'12px'}}/>
+                                <img src={right} style={{width : '15px', marginTop :'5px'}}/>
                             </div>
                             <div className = "month">
                                 {this.state.Month}
                             </div>
                         </div>
                         {dayofweek}
-                        {this.state.Calendar}
+                        {Calendar}
+
                     </div>
                     <div style = {{height : '100%'}}>
                         <img src='https://goo.gl/CTk1PE' className = "bar"/>
                     </div>
                     <div className="col span-3-of-12">
-                        <Route path={'/ch102/schedule/:id'} component={Info} />
+                        {this.state.Post}
                     </div>
                 </div>
             </div>
