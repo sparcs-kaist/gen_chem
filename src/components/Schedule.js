@@ -101,7 +101,7 @@ function getDayList(year, month) {
 var currDayList = getDayList(currYear,currMonth)
 
 const day  = {
-    width : '14%',
+    width : '14.2%',
     height : "70px",
     /*backgroundColor: "lightgray",*/
     textAlign : "center",
@@ -112,7 +112,7 @@ const day  = {
 }
 
 const notCurrday  = {
-    width : '14%',
+    width : '14.2%',
     height : "70px",
     /*backgroundColor: "lightgray",*/
     marginTop : '1px',
@@ -221,10 +221,10 @@ class Schedule extends Component {
                         </div>
                         <div className = "row" style = {{marginBottom : '30px'}}>
                             <div style = {{float:'left'}} onClick={this.prevCalendar}>
-                                <img src={left} style={{width : '15px', marginTop :'5px'}}/>
+                                <img src={left} style={{width : '11px', marginTop :'12px'}}/>
                             </div>
                             <div style = {{float : "right"}} onClick={this.nextCalendar}>
-                                <img src={right} style={{width : '15px', marginTop :'5px'}}/>
+                                <img src={right} style={{width : '11px', marginTop :'12px'}}/>
                             </div>
                             <div className = "month">
                                 {this.state.Month}
