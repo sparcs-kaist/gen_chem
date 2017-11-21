@@ -101,21 +101,21 @@ function getDayList(year, month) {
 var currDayList = getDayList(currYear,currMonth)
 
 const day  = {
-    width : '13.5%',
+    width : '14%',
     height : "70px",
     /*backgroundColor: "lightgray",*/
-    margin : "1px",
     textAlign : "center",
+    marginTop : '1px',
     fontSize : "20pt",
     float : 'left',
     lineHeight : "70px"
 }
 
 const notCurrday  = {
-    width : '13.5%',
+    width : '14%',
     height : "70px",
     /*backgroundColor: "lightgray",*/
-    margin : "1px",
+    marginTop : '1px',
     textAlign : "center",
     fontSize : "20pt",
     float : 'left',
@@ -216,7 +216,7 @@ class Schedule extends Component {
             <div className = "section">
                 <div className = "row" style = {{marginTop : '40px'}}>
                     <div className = "col span-8-of-12">
-                        <div className ="row" style = {{fontSize :'14px', width : '90%', textAlign : 'center', marginBottom : '10px'}}>
+                        <div style = {{width : '100%', fontSize :'14px', textAlign : 'center', marginBottom : '5px'}}>
                             {this.state.Year}
                         </div>
                         <div className = "row" style = {{marginBottom : '30px'}}>

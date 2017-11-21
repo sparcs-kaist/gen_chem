@@ -25,11 +25,10 @@
 /*-------*/
 
 .dayofweek {
-	width : 13.5%;
+	width : 14%;
 	height : 30px;
 	font-size : 10pt;
 	line-height: 30px;
-	margin : 1px;
 	float : left;
 	text-align: center;
 }
