@@ -95,7 +95,7 @@ function getDayList(year, month) {
 }
 
 const day  = {
-    width : '14.2%',
+    width : '14%',
     height : "70px",
     /*backgroundColor: "lightgray",*/
     textAlign : "center",
@@ -106,7 +106,7 @@ const day  = {
 }
 
 const notCurrday  = {
-    width : '14.2%',
+    width : '14%',
     height : "70px",
     /*backgroundColor: "lightgray",*/
     marginTop : '1px',
@@ -120,11 +120,11 @@ const notCurrday  = {
 const dayweek = ['Sun', 'Mon', 'Tue', 'Wed', "Thu", "Fri", "Sat"];
 
 const dayofweek = dayweek.map((item)=>{
-	return (
-		<div className = "dayofweek">
-			{item}
-		</div>
-	);
+    return (
+        <div className = "dayofweek">
+            {item}
+        </div>
+    );
 });
 
 class Schedule extends Component {
@@ -208,10 +208,10 @@ class Schedule extends Component {
                         </div>
                         <div className = "row" style = {{marginBottom : '30px'}}>
                             <div style = {{float:'left'}} onClick={this.prevCalendar}>
-                                <img src={left} style={{width : '11px', marginTop :'12px'}}/>
+                                <img src={left} style={{width : '15px', marginTop :'5px'}}/>
                             </div>
                             <div style = {{float : "right"}} onClick={this.nextCalendar}>
-                                <img src={right} style={{width : '11px', marginTop :'12px'}}/>
+                                <img src={right} style={{width : '15px', marginTop :'5px'}}/>
                             </div>
                             <div className = "month">
                                 {this.state.Month}
