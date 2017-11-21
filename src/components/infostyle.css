@@ -43,3 +43,14 @@
 	margin : 0 auto;
 	text-align: center;
 }
+
+.moreinfo {
+	display: table;
+	vertical-align: middle;
+}
+
+@media only screen and (max-width:900px) {
+	.moreinfo {
+		display: none;
+	}
+}

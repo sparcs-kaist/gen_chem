@@ -67,7 +67,8 @@ function getDayList(year, month) {
         var prevDay = getDaysofMonth(year,prevMonth)-firstDay+i+1;
         days.push({
             Day : prevDay.toString(),
-            info : "Nothing",
+            infohead : "Nothing",
+            infocontent : "Nothing",
             stat : "prev"
         });
         cnt++;
@@ -76,7 +77,8 @@ function getDayList(year, month) {
     for (i=1;i<=dayNum;i++) {
         days.push({
             Day : i.toString(),
-            info : "Nothing",
+            infohead : "Nothing",
+            infocontent : "Nothing",
             stat : "curr"
         })
         cnt++;
@@ -86,7 +88,8 @@ function getDayList(year, month) {
     for (i=1;i<=leftDay;i++) {
         days.push({
             Day : i.toString(),
-            info : "Nothing",
+            infohead : "Nothing",
+            infocontent : "Nothing",
             stat : "next"
         })
     }
@@ -95,7 +98,7 @@ function getDayList(year, month) {
 }
 
 const day  = {
-    width : '14%',
+    width : '14.2%',
     height : "70px",
     /*backgroundColor: "lightgray",*/
     textAlign : "center",
@@ -106,7 +109,7 @@ const day  = {
 }
 
 const notCurrday  = {
-    width : '14%',
+    width : '14.2%',
     height : "70px",
     /*backgroundColor: "lightgray",*/
     marginTop : '1px',
@@ -139,7 +142,8 @@ class Schedule extends Component {
             Today : today,
             Year : currYear,
             Month : currMonth,
-            Post : "No Post"
+            Head : "No Post",
+            Content : "-"
         };
 
         this.nextCalendar = this.nextCalendar.bind(this);
@@ -184,16 +188,13 @@ class Schedule extends Component {
                 return (
                     <div>
                         {item.stat=="curr"?
-                            <div style={day} onClick={this.setPost.bind(this, item.info)}>
+                            <div style={day} onClick={this.setPost.bind(this, this.state.Head = item.infohead, this.state.Content = item.infocontent)}>
                                 {item.Day}
                             </div> :
                             <div style={notCurrday}>
                                 {item.Day}
                             </div>
                         }
-                        <div style={{display : 'none'}}>
-                            {item.info}
-                        </div>
                     </div>
                 );
             }
@@ -225,7 +226,10 @@ class Schedule extends Component {
                         <img src='https://goo.gl/CTk1PE' className = "bar"/>
                     </div>
                     <div className="col span-3-of-12">
-                        {this.state.Post}
+                        <div style='moreinfo'>
+                            {this.state.Head}<br/>
+                            {this.state.Content}
+                        </div>
                     </div>
                 </div>
             </div>
