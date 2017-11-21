@@ -209,10 +209,10 @@ class Schedule extends Component {
                         </div>
                         <div className = "row" style = {{marginBottom : '30px'}}>
                             <div style = {{float:'left'}} onClick={this.prevCalendar}>
-                                <img src={left} style={{width : '15px', marginTop :'5px'}}/>
+                                <img src={left} style={{width : '11px', marginTop :'12px'}}/>
                             </div>
                             <div style = {{float : "right"}} onClick={this.nextCalendar}>
-                                <img src={right} style={{width : '15px', marginTop :'5px'}}/>
+                                <img src={right} style={{width : '11px', marginTop :'12px'}}/>
                             </div>
                             <div className = "month">
                                 {this.state.Month}
@@ -226,10 +226,8 @@ class Schedule extends Component {
                         <img src='https://goo.gl/CTk1PE' className = "bar"/>
                     </div>
                     <div className="col span-3-of-12">
-                        <div style='moreinfo'>
                             {this.state.Head}<br/>
                             {this.state.Content}
-                        </div>
                     </div>
                 </div>
             </div>
