@@ -12,8 +12,12 @@
 /*---------------*/
 
 .bar {
-	width : 10px;
+	width : 3px;
+	height : 350px;
+	background-color: #414141;
 	float : left;
+	margin-top: 13%;
+	margin-left: 40px;
 }
 
 @media only screen and (max-width : 900px) {
@@ -27,10 +31,21 @@
 .dayofweek {
 	width : 14.2%;
 	height : 30px;
-	font-size : 10pt;
+	margin-bottom: 10px;
+	font-size : 1em;
+	font-weight: 900;
 	line-height: 30px;
 	float : left;
 	text-align: center;
+}
+
+.dowbar {
+	width : 97%;
+	margin-left: auto;
+	margin-right: auto;
+	height : 1px;
+	background-color: #000000;
+	clear : both;
 }
 
 .month {
@@ -38,4 +53,52 @@
 	font-weight : 700;
 	margin : 0 auto;
 	text-align: center;
+}
+
+.moreinfo {
+	display: table;
+	vertical-align: middle;
+}
+
+@media only screen and (max-width:900px) {
+	.moreinfo {
+		display: none;
+	}
+}
+
+.legend {
+	position : absolute;
+	top : 20px;
+	left : 84.5%;
+	width : 160px;
+	height : 100px;
+	background-color: #E4E4E4;
+	border-radius: 10px;
+}
+
+@media only screen and (max-width:900px) {
+	.legend{
+		display: none;
+	}
+}
+
+.day{
+	width : 14.2%;
+	height: 70px;
+	text-align: center;
+	margin-top: 1px;
+	font-size: 1.3em;
+	float : left;
+	line-height: 70px;
+}
+
+.notCurrday {
+	width : 14.2%;
+	height: 70px;
+	margin-top: 1px;
+	text-align: center;
+	font-size: 1.3em;
+	float : left;
+	line-height: 70px;
+	color : #C2C2C2;
 }
