@@ -201,7 +201,7 @@ class Schedule extends Component {
         )
 
         return (
-            <div className = "section" style = {{position : 'relative'}}>
+            <div className = "section">
                 <div className = "row" style = {{marginTop : '40px'}}>
                     <div className = "col span-8-of-12">
                         <div style = {{width : '100%', fontSize :'14px', textAlign : 'center', marginBottom : '5px'}}>
