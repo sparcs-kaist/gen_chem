@@ -188,10 +188,10 @@ class Schedule extends Component {
                 return (
                     <div>
                         {item.stat=="curr"?
-                            <div style={day} onClick={this.setPost.bind(this, this.state.Head = item.infohead, this.state.Content = item.infocontent)}>
+                            <div className="day" onClick={this.setPost.bind(this, this.state.Head = item.infohead, this.state.Content = item.infocontent)}>
                                 {item.Day}
                             </div> :
-                            <div style={notCurrday}>
+                            <div className="notCurrday">
                                 {item.Day}
                             </div>
                         }
@@ -201,7 +201,7 @@ class Schedule extends Component {
         )
 
         return (
-            <div className = "section">
+            <div className = "section" style = {{position : 'relative'}}>
                 <div className = "row" style = {{marginTop : '40px'}}>
                     <div className = "col span-8-of-12">
                         <div style = {{width : '100%', fontSize :'14px', textAlign : 'center', marginBottom : '5px'}}>
@@ -219,6 +219,7 @@ class Schedule extends Component {
                             </div>
                         </div>
                         {dayofweek}
+                        <div className ="dowbar"></div>
                         {Calendar}
 
                     </div>
@@ -229,6 +230,9 @@ class Schedule extends Component {
                             {this.state.Head}<br/>
                             {this.state.Content}
                     </div>
+                </div>
+                <div className='legend'>
+                    <p>범례 1<br/>범례 2<br/>범례 3</p>
                 </div>
             </div>
         );
