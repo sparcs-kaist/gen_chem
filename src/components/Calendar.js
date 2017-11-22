@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../grid.css';
+import './infostyle.css';
 import MediaQuery from 'react-responsive';
 
 function getPrevMonth(month) {
@@ -111,7 +112,7 @@ export default class Calendar extends Component {
             dayList.map((item)=> {
                     return (
                         <div>
-                            <MediaQuery qurey="(min-Width : 800px)">
+                            <MediaQuery query="(min-Width : 800px)">
                                 {item.stat=="curr"?
                                     <div style={day} onClick={() => {this.props.setPost(item.info)}}>
                                         {item.Day}
