@@ -231,9 +231,6 @@ class Schedule extends Component {
                             {this.state.Content}
                     </div>
                 </div>
-                <div className='legend'>
-                    <p>범례 1<br/>범례 2<br/>범례 3</p>
-                </div>
             </div>
         );
     }
