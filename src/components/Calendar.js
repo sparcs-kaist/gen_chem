@@ -112,7 +112,7 @@ export default class Calendar extends Component {
             dayList.map((item)=> {
                     return (
                         <div>
-                            <MediaQuery query="(min-Width : 800px)">
+                            <MediaQuery query="(min-Width : 900px)">
                                 {item.stat=="curr"?
                                     <div style={day} onClick={() => {this.props.setPost(item.info)}}>
                                         {item.Day}
@@ -122,7 +122,7 @@ export default class Calendar extends Component {
                                     </div>
                                 }
                             </MediaQuery>
-                            <MediaQuery query="(max-Width : 800px)">
+                            <MediaQuery query="(max-Width : 900px)">
                                 {item.stat=="curr"?
                                     <div style={day} onClick={() => {this.props.setModal(item.info)}}>
                                         {item.Day}

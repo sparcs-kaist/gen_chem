@@ -31,19 +31,28 @@ const dayofweek = dayweek.map((item)=>{
     );
 });
 
-
-/*-----------------------*/
-const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+const modalstyle = {
+    overlay : {
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(20, 20, 20, 0.75)'
+  },
+    content : {
+    position                   : 'absolute',
+    width : '300px',
+    height : '380px',
+    top                        : '50%',
+    left                       : '50%',
+    marginTop : '-230px',
+    marginLeft : '-170px',
+    background                 : '#fff',
+    borderRadius               : '30px',
+    overflow :'hidden'
   }
-};
-/*-----------------------*/
+}
 
 class Schedule extends Component {
     constructor(props){
@@ -64,7 +73,7 @@ class Schedule extends Component {
         this.increaseMonth = this.increaseMonth.bind(this);
         this.decreaseMonth = this.decreaseMonth.bind(this);
         this.setPost = this.setPost.bind(this);
-
+        this.setModal = this.setModal.bind(this);
         this.openModal = this.openModal.bind(this);
         this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
@@ -107,7 +116,6 @@ class Schedule extends Component {
     }
 
     afterOpenModal() {
-        this.subtitle.style.color = '#f00';
     }
 
     closeModal() {
@@ -139,16 +147,19 @@ class Schedule extends Component {
 
                     </div>
                     <div className = "bar"/>
-                    <MediaQuery query = "(min-Width : 800px)">
+                    <MediaQuery query = "(min-Width : 900px)">
                         <div className="col span-3-of-12">
                             {this.state.Post}
                         </div>
                     </MediaQuery>
-                    <MediaQuery query = "(max-Width : 800px)">
-                        <Modal isOpen = {this.state.modalIsOpen} onAfterOpen = {this.afterOpenModal} onRequestClose={this.closeModal} style={customStyles} contentLabel = "Example Modal">
-                            <h1 ref={subtitle => this.subtitle = subtitle}>
+                    <MediaQuery query = "(max-Width : 900px)">
+                        <Modal isOpen = {this.state.modalIsOpen} onRequestClose={this.closeModal} style={modalstyle}>
+                            <p ref={subtitle => this.subtitle = subtitle}>
                                 {this.state.Post}
-                            </h1>
+                            </p>
+                            <div style = {{backgroundColor : '#818181', width:'70px', height : '20px'}}>
+                            close
+                            </div>
                         </Modal>
                     </MediaQuery>
                 </div>
