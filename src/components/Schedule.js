@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../grid.css';
 import './infostyle.css';
+import Modal from 'react-modal';
+import MediaQuery from 'react-responsive';
 
 import Calendar from './Calendar';
 import CalendarHead from "./CalendarHead";
@@ -29,6 +31,20 @@ const dayofweek = dayweek.map((item)=>{
     );
 });
 
+
+/*-----------------------*/
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
+  }
+};
+/*-----------------------*/
+
 class Schedule extends Component {
     constructor(props){
         super(props);
@@ -41,12 +57,17 @@ class Schedule extends Component {
             Today : today,
             Year : currYear,
             Month : currMonth,
-            Post : "No Post"
+            Post : "No Post",
+            modalIsOpen : false
         };
 
         this.increaseMonth = this.increaseMonth.bind(this);
         this.decreaseMonth = this.decreaseMonth.bind(this);
         this.setPost = this.setPost.bind(this);
+
+        this.openModal = this.openModal.bind(this);
+        this.afterOpenModal = this.afterOpenModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     decreaseMonth () {
@@ -81,6 +102,25 @@ class Schedule extends Component {
         })
     }
 
+    openModal() {
+        this.setState({modalIsOpen : true});
+    }
+
+    afterOpenModal() {
+        this.subtitle.style.color = '#f00';
+    }
+
+    closeModal() {
+        this.setState({modalIsOpen: false});
+    }
+
+    setModal (post) {
+        this.setState ({
+            Post : post,
+            modalIsOpen : true
+        })
+    }
+
     render () {
         return (
             <div className = "section">
@@ -91,15 +131,26 @@ class Schedule extends Component {
                                       increaseMonth={this.increaseMonth}
                                       decreaseMonth={this.decreaseMonth}/>
                         {dayofweek}
+                        <div className = "hbar"/>
                         <Calendar Month={this.state.Month}
                                   Year={this.state.Year}
-                                  setPost={this.setPost}/>
+                                  setPost={this.setPost}
+                                  setModal={this.setModal}/>
 
                     </div>
-                    <img src='https://goo.gl/CTk1PE' className = "bar"/>
-                    <div className="col span-3-of-12">
-                        {this.state.Post}
-                    </div>
+                    <div className = "bar"/>
+                    <MediaQuery query = "(min-Width : 800px)">
+                        <div className="col span-3-of-12">
+                            {this.state.Post}
+                        </div>
+                    </MediaQuery>
+                    <MediaQuery query = "(max-Width : 800px)">
+                        <Modal isOpen = {this.state.modalIsOpen} onAfterOpen = {this.afterOpenModal} onRequestClose={this.closeModal} style={customStyles} contentLabel = "Example Modal">
+                            <h1 ref={subtitle => this.subtitle = subtitle}>
+                                {this.state.Post}
+                            </h1>
+                        </Modal>
+                    </MediaQuery>
                 </div>
             </div>
         );

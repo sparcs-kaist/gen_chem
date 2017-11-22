@@ -12,12 +12,21 @@
 /*---------------*/
 
 .bar {
-	width : 3px;
+	width : 5px;
 	height : 350px;
 	background-color: #414141;
 	float : left;
-	margin-top: 13%;
+	margin-top: 12%;
 	margin-left: 40px;
+}
+
+.hbar {
+	width : 88%;
+	height: 1.5px;
+	background-color: #C8C8C8;
+	clear : both;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 @media only screen and (max-width : 900px) {
@@ -31,7 +40,7 @@
 .dayofweek {
 	width : 14.2%;
 	height : 30px;
-	margin-bottom: 10px;
+	margin-bottom: 14px;
 	font-size : 1em;
 	font-weight: 900;
 	line-height: 30px;
@@ -101,4 +110,15 @@
 	float : left;
 	line-height: 70px;
 	color : #C2C2C2;
+}
+
+.modal{
+	position : absolute;
+	width : 100px;
+	height : 150px;
+	top : 50%;
+	left : 50%;
+	margin-top: -50px;
+	margin-left: -75px;
+	background-color: #F2F2F2;
 }
