@@ -60,7 +60,7 @@ function getDayList(year, month) {
             Day : i.toString(),
             info : "Nothing",
             stat : "curr"
-        })
+        });
         cnt++;
     }
 
