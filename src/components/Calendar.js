@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../grid.css';
+import './infostyle.css';
+import MediaQuery from 'react-responsive';
 
 function getPrevMonth(month) {
     if (month == 1)
@@ -77,23 +79,23 @@ function getDayList(year, month) {
 }
 
 const day  = {
-    width : '14%',
+    width : '14.2%',
     height : "70px",
     /*backgroundColor: "lightgray",*/
     textAlign : "center",
     marginTop : '1px',
-    fontSize : "20pt",
+    fontSize : "1.3em",
     float : 'left',
     lineHeight : "70px"
 }
 
 const notCurrday  = {
-    width : '14%',
+    width : '14.2%',
     height : "70px",
     /*backgroundColor: "lightgray",*/
     marginTop : '1px',
     textAlign : "center",
-    fontSize : "20pt",
+    fontSize : "1.3em",
     float : 'left',
     lineHeight : "70px",
     color : "#C2C2C2"
@@ -110,14 +112,26 @@ export default class Calendar extends Component {
             dayList.map((item)=> {
                     return (
                         <div>
-                            {item.stat=="curr"?
-                                <div style={day} onClick={() => {this.props.setPost(item.info)}}>
-                                    {item.Day}
-                                </div> :
-                                <div style={notCurrday}>
-                                    {item.Day}
-                                </div>
-                            }
+                            <MediaQuery query="(min-Width : 900px)">
+                                {item.stat=="curr"?
+                                    <div style={day} onClick={() => {this.props.setPost(item.info)}}>
+                                        {item.Day}
+                                    </div> :
+                                    <div style={notCurrday}>
+                                        {item.Day}
+                                    </div>
+                                }
+                            </MediaQuery>
+                            <MediaQuery query="(max-Width : 900px)">
+                                {item.stat=="curr"?
+                                    <div style={day} onClick={() => {this.props.setModal(item.info)}}>
+                                        {item.Day}
+                                    </div> :
+                                    <div style={notCurrday}>
+                                        {item.Day}
+                                    </div>
+                                }
+                            </MediaQuery>
                         </div>
                     );
                 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../grid.css';
 import '../Nanum.css';
+import profile from './img/default.png';
 
 const imgstyle ={
     height:'45px',
@@ -59,7 +60,7 @@ class TACard extends Component {
 }
 
 TACard.defaultProps = {
-    img : 'http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png'
+    img : profile
 }
 
 export default TACard;
