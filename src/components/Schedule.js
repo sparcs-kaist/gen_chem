@@ -6,6 +6,7 @@ import MediaQuery from 'react-responsive';
 
 import Calendar from './Calendar';
 import CalendarHead from "./CalendarHead";
+import DateInfo from "./DateInfo";
 
 function getNextMonth(month) {
     if (month == 12)
@@ -67,6 +68,12 @@ class Schedule extends Component {
             Year : currYear,
             Month : currMonth,
             Post : "No Post",
+            hasQuiz : false,
+            hasExam : false,
+            hasRecitation : false,
+            Quiz : "q",
+            Exam : "e",
+            Recitation : "r",
             modalIsOpen : false
         };
 
@@ -105,9 +112,17 @@ class Schedule extends Component {
         });
     }
 
-    setPost (post) {
+    setPost (hasquiz, quiz, hasexam, exam, hasrecitation, recitation) {
+        // this.setState ({
+        //     Post : post
+        // })
         this.setState ({
-            Post : post
+            hasQuiz : hasquiz,
+            Quiz : quiz,
+            hasExam : hasexam,
+            Exam : exam,
+            hasRecitation : hasrecitation,
+            Recitation : recitation
         })
     }
 
@@ -122,9 +137,18 @@ class Schedule extends Component {
         this.setState({modalIsOpen: false});
     }
 
-    setModal (post) {
+    setModal (hasquiz, quiz, hasexam, exam, hasrecitation, recitation) {
+        // this.setState ({
+        //     Post : post,
+        //     modalIsOpen : true
+        // })
         this.setState ({
-            Post : post,
+            hasQuiz : hasquiz,
+            Quiz : quiz,
+            hasExam : hasexam,
+            Exam : exam,
+            hasRecitation : hasrecitation,
+            Recitation : recitation,
             modalIsOpen : true
         })
     }
@@ -149,13 +173,23 @@ class Schedule extends Component {
                     <div className = "bar"/>
                     <MediaQuery query = "(min-Width : 900px)">
                         <div className="col span-3-of-12">
-                            {this.state.Post}
+                            <DateInfo hasQuiz={this.state.hasQuiz}
+                                      hasExam={this.state.hasExam}
+                                      hasRecitation={this.state.hasRecitation}
+                                      Quiz={this.state.Quiz}
+                                      Exam={this.state.Exam}
+                                      Recitation={this.state.Recitation}/>
                         </div>
                     </MediaQuery>
                     <MediaQuery query = "(max-Width : 900px)">
                         <Modal isOpen = {this.state.modalIsOpen} onRequestClose={this.closeModal} style={modalstyle}>
                             <p ref={subtitle => this.subtitle = subtitle}>
-                                {this.state.Post}
+                                <DateInfo hasQuiz={this.state.hasQuiz}
+                                          hasExam={this.state.hasExam}
+                                          hasRecitation={this.state.hasRecitation}
+                                          Quiz={this.state.Quiz}
+                                          Exam={this.state.Exam}
+                                          Recitation={this.state.Recitation}/>
                             </p>
                             <div style = {{backgroundColor : '#818181', width:'70px', height : '20px'}}>
                             close
