@@ -7,6 +7,7 @@ import MediaQuery from 'react-responsive';
 import Calendar from './Calendar';
 import CalendarHead from "./CalendarHead";
 import DateInfo from "./DateInfo";
+import close from "./img/close.png";
 
 function getNextMonth(month) {
     if (month == 12)
@@ -53,6 +54,15 @@ const modalstyle = {
     borderRadius               : '30px',
     overflow :'hidden'
   }
+}
+
+const closebutton = {
+    position : 'absolute',
+    top : '20px',
+    right : '20px',
+    width : '25px',
+    height : '25px',
+    opacity : '0.5'
 }
 
 class Schedule extends Component {
@@ -191,9 +201,7 @@ class Schedule extends Component {
                                           Exam={this.state.Exam}
                                           Recitation={this.state.Recitation}/>
                             </p>
-                            <div style = {{backgroundColor : '#818181', width:'70px', height : '20px'}} onClick = {this.closeModal}>
-                            close
-                            </div>
+                            <img src={close} style = {closebutton} onClick = {this.closeModal}/>
                         </Modal>
                     </MediaQuery>
                 </div>
