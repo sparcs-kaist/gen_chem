@@ -9,11 +9,11 @@ export default class TabCompressedCH101 extends Component {
   render () {
     return (
       <div style={{position: 'fixed', minWidth: 300, width: '100%'}}>
-        <div style={{position: 'absolute', top: 0, width: '100%'}}>
+        <div style={{position: 'relative',  width: '100%'}}>
           <NavLink className="tab" activeClassName="active-tab" to="/ch101/notice" style={{display: this.props.clicked ? 'block' : 'none'}}>
             <Section onPress={this.props.onPress} title="NOTICE" style={{backgroundColor: '#F4862C', color: '#FFFFFF'}} />
           </NavLink>
-          <NavLink className="tab" activeClassName="active-tab" to="/ch101/schedule" style={{position: 'absolute', display: this.props.clicked ? 'block' : 'none'}}>
+          <NavLink className="tab" activeClassName="active-tab" to="/ch101/schedule" style={{display: this.props.clicked ? 'block' : 'none'}}>
             <Section onPress={this.props.onPress} title="Schedule" style={{backgroundColor: '#F4862C', color: '#FFFFFF'}} />
           </NavLink>
           <NavLink className="tab" activeClassName="active-tab" to="/ch101/download" style={{display: this.props.clicked ? 'block' : 'none'}}>

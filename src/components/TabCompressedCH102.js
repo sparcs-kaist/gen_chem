@@ -9,8 +9,8 @@ export default class TabCompressedCH102 extends Component {
 
   render () {
     return (
-      <div>
-        <div style={{position: 'absolute', top: 0, right: 0, left: 0}}>
+      <div style={{position: 'fixed', minWidth: 300, width: '100%'}}>
+        <div style={{position: 'relative',  width: '100%'}}>
           <NavLink className="tab" activeClassName="active-tab" to="/ch102/notice" style={{display: this.props.clicked ? 'block' : 'none'}}>
             <Section onPress={this.props.onPress} title="NOTICE" style={{backgroundColor: '#FFDD33', color: '#000000'}} />
           </NavLink>

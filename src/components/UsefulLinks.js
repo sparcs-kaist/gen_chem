@@ -38,7 +38,7 @@ class LinkElem extends Component {
   }
 
   render () {
-    return (<div className="list-item" onMouseEnter={() => this.onHover()} onMouseLeave={()=> this.onLeave()} style={{ opacity: this.state.hover ? 0.7 : 1 }}>
+    return (<div className="list-item" onMouseEnter={() => this.onHover()} onMouseLeave={()=> this.onLeave()} style={{ zIndex: -1, opacity: this.state.hover ? 0.7 : 1 }}>
           <div className="row" style={{...rowStyle }}>
               <div className = "col span-2-of-2">
                   <a href={this.props.link}>

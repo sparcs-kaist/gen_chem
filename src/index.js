@@ -7,6 +7,12 @@ import './'
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
+// const browserHistory = createBrowserHistory();
+//
+// browserHistory.listen((location, action) => {
+//   window.scrollTo(0, 0);
+// });
+
 ReactDOM.render(
   (
   <BrowserRouter>

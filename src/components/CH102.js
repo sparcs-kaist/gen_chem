@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TabCompressedCH102 from "./TabCompressedCH102";
+import TabCH102 from './TabCH102';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import Notice from './Notice';
@@ -9,6 +10,7 @@ import Evaluation from './Evaluation';
 import SafetyRule from './SafetyRule';
 import Download from './Download';
 import Schedule from './Schedule';
+import MediaQuery from 'react-responsive';
 
 export default class CH102 extends Component {
   constructor(props) {
@@ -39,7 +41,14 @@ export default class CH102 extends Component {
   render() {
     return (
       <div style={{backgroundColor: 'white', paddingBottom: 48}}>
-        <TabCompressedCH102 onPress={this.dropDown} clicked={this.state.clicked}/>
+        <MediaQuery query="(max-width: 900px)">
+          <TabCompressedCH102 onPress={this.dropDown} clicked={this.state.clicked}/>
+        </MediaQuery>
+        <MediaQuery query="(min-width: 900px)">
+          <TabCH102 />
+        </MediaQuery>
+
+        <MediaQuery query="(max-width: 900px)">
         <div style={{paddingTop: 64}}>
           <Switch>
             <Route path='/ch102/notice' render={() => <Notice onPress={this.dropUp}/>} />
@@ -51,6 +60,20 @@ export default class CH102 extends Component {
             <Redirect from='/ch102' to='/ch102/notice' />
           </Switch>
         </div>
+        </MediaQuery>
+        <MediaQuery query="(min-width: 900px)">
+          <div style={{paddingTop: 128}}>
+            <Switch>
+              <Route path='/ch102/notice' render={() => <Notice onPress={this.dropUp}/>} />
+              <Route path='/ch102/schedule' render={() => <Schedule />} />
+              <Route path='/ch102/evaluation' render={() => <Evaluation />} />
+              <Route path='/ch102/safety' render={() => <SafetyRule />} />
+              <Route path='/ch102/links' render={() => <div style={{minHeight: '100vh'}}><UsefulLinks /></div>} />
+              <Route path='/ch102/contact' render={() => <TAContact/> } />
+              <Redirect from='/ch102' to='/ch102/notice' />
+            </Switch>
+          </div>
+        </MediaQuery>
       </div>
     );
   }
