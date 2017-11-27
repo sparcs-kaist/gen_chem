@@ -28,7 +28,7 @@ export default class DateInfo extends Component {
             </div>
 
         } else {
-            Post = "GENCHEMINKAIST"
+            Post = "No Info"
         }
 
         return (

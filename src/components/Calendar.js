@@ -55,6 +55,13 @@ function getDayList(year, month) {
             info : "Nothing",
             stat : "prev",
             DayNum : date,
+            hasQuiz : true,
+            hasExam : true,
+            hasRecitation : true,
+            Quiz : "quiz",
+            Exam : "exam",
+            Recitation : "recitation class"
+
 
         });
         cnt++;
@@ -85,6 +92,12 @@ function getDayList(year, month) {
             info : "Nothing",
             stat : "next",
             DayNum : date,
+            hasQuiz : true,
+            hasExam : true,
+            hasRecitation : true,
+            Quiz : "quiz",
+            Exam : "exam",
+            Recitation : "recitation class"
 
         })
         cnt++;
@@ -101,7 +114,8 @@ const day  = {
     marginTop : '1px',
     fontSize : "1.3em",
     float : 'left',
-    lineHeight : "70px"
+    lineHeight : "70px",
+    position : 'relative'
 }
 
 const sunday  = {
@@ -113,7 +127,8 @@ const sunday  = {
     fontSize : "1.3em",
     float : 'left',
     lineHeight : "70px",
-    color : "red"
+    color : "red",
+    position : 'relative'
 }
 
 const saturday  = {
@@ -125,7 +140,8 @@ const saturday  = {
     fontSize : "1.3em",
     float : 'left',
     lineHeight : "70px",
-    color : "blue"
+    color : "blue",
+    position : 'relative'
 }
 
 const notCurrday  = {
@@ -140,6 +156,41 @@ const notCurrday  = {
     color : "#C2C2C2"
 }
 
+const quiz ={
+    width : '6px',
+    height : '6px',
+    marginLeft : 'auto',
+    borderRadius : '3px',
+    backgroundColor : "#DF5050",
+    float : 'left',
+    top : '12px',
+    left : '37%',
+    position : 'absolute'
+}
+
+const exam = {
+    width : '6px',
+    height : '6px',
+    marginLeft : 'auto',
+    borderRadius : '3px',
+    backgroundColor : "#5092DF",
+    float : 'left',
+    top : '12px',
+    left : '47%',
+    position : 'absolute'
+}
+
+const recit = {
+    width : '6px',
+    height : '6px',
+    marginLeft : 'auto',
+    borderRadius : '3px',
+    backgroundColor : "#9FCA61",
+    float : 'left',
+    top : '12px',
+    left : '57%',
+    position : 'absolute'
+}
 export default class Calendar extends Component {
     render () {
         var dayList = getDayList(this.props.Year, this.props.Month);
@@ -151,23 +202,45 @@ export default class Calendar extends Component {
             {
             dayList.map((item)=> {
                 let calendar_date = null;
+                let Quiz = null;
+                let Exam = null;
+                let Recitation = null;
                 let currday = item.Day;
+                if (item.hasQuiz) {
+                    Quiz = <div style = {quiz}></div>
+                }
+                if (item.hasExam) {
+                    Exam = <div style = {exam}></div>
+                }
+                if (item.hasRecitation) {
+                    Recitation = <div style = {recit}></div>
+                }
                 if (this.props.Month == today.getMonth()+1
                     && this.props.Year == today.getFullYear()
                     && item.Day == today.getDate())
-                    currday = <div style={{fontWeight : "900"}}>{item.Day}</div>
-
+                    currday = <div style={{backgroundColor: "#EEEEEE", fontWeight : "1000", borderRadius : "10px"}}>{item.Day}</div>
                 if (item.stat=="curr") {
                     if (item.DayNum==0) {
-                        calendar_date = <div style={sunday}>{currday}</div>;
+                        calendar_date = <div style={sunday}>
+                        {Quiz}{Exam}{Recitation}
+                        {currday}
+                        </div>;
                     } else if (item.DayNum==6) {
-                        calendar_date = <div style={saturday}>{currday}</div>;
+                        calendar_date = <div style={saturday}>
+                        {Quiz}{Exam}{Recitation}
+                        {currday}
+                        </div>;
                     } else {
-                        calendar_date = <div style={day}>{currday}</div>;
+                        calendar_date = <div style={day}>
+                        {Quiz}{Exam}{Recitation}
+                        {currday}
+                        </div>;
                     }
                 } else {
                     calendar_date = <div style={notCurrday}>{currday}</div>;
                 }
+
+
 
                 return (
                     <div>

@@ -191,7 +191,7 @@ class Schedule extends Component {
                                           Exam={this.state.Exam}
                                           Recitation={this.state.Recitation}/>
                             </p>
-                            <div style = {{backgroundColor : '#818181', width:'70px', height : '20px'}}>
+                            <div style = {{backgroundColor : '#818181', width:'70px', height : '20px'}} onClick = {this.closeModal}>
                             close
                             </div>
                         </Modal>
