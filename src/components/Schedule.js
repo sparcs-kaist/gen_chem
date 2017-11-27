@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import {Link, Route} from 'react-router-dom';
 import '../grid.css';
-import Info from './Info.js';
 import './infostyle.css';
-import left from './img/left.png'
-import right from './img/right.png'
+import Modal from 'react-modal';
+import MediaQuery from 'react-responsive';
 
-
-var today = new Date();
-var todayYear = today.getFullYear();
-var todayMonth = today.getMonth()+1;
-var todayDate = today.getDate();
+import Calendar from './Calendar';
+import CalendarHead from "./CalendarHead";
+import DateInfo from "./DateInfo";
+import close from "./img/close.png";
 
 function getNextMonth(month) {
     if (month == 12)
@@ -26,100 +23,6 @@ function getPrevMonth(month) {
     return month-1;
 }
 
-function getDaysofMonth(year, month) {
-    if (month == 2) {
-        if (year%4 == 0) return 29;
-        else return 28;
-    }
-
-    if (month < 8) {
-        if (month%2 == 0) return 30;
-        else return 31;
-    }
-
-    if (month%2 == 0) return 31;
-    return 30;
-}
-
-function getFirstDay(year, month) {
-    var days = 1;
-
-    days += (year-1900)*365;
-    days += parseInt((year-1900)/4);
-    if (month < 3 && year%4 == 0) days -= 1;
-
-    for (var i=1;i<month;i++) {
-        days += getDaysofMonth(year,i);
-    }
-
-    return days%7;
-}
-
-function getDayList(year, month) {
-    var days = [];
-    var firstDay = getFirstDay(year, month);
-    var dayNum = getDaysofMonth(year, month);
-    var prevMonth = getPrevMonth(year, month);
-
-    var i;
-    var cnt = 0;
-    for (i=0;i<firstDay;i++) {
-        var prevDay = getDaysofMonth(year,prevMonth)-firstDay+i+1;
-        days.push({
-            Day : prevDay.toString(),
-            infohead : "Nothing",
-            infocontent : "Nothing",
-            stat : "prev"
-        });
-        cnt++;
-    }
-
-    for (i=1;i<=dayNum;i++) {
-        days.push({
-            Day : i.toString(),
-            infohead : "Nothing",
-            infocontent : "Nothing",
-            stat : "curr"
-        })
-        cnt++;
-    }
-
-    var leftDay = 42 - cnt  ;
-    for (i=1;i<=leftDay;i++) {
-        days.push({
-            Day : i.toString(),
-            infohead : "Nothing",
-            infocontent : "Nothing",
-            stat : "next"
-        })
-    }
-
-    return days;
-}
-
-const day  = {
-    width : '14.2%',
-    height : "70px",
-    /*backgroundColor: "lightgray",*/
-    textAlign : "center",
-    marginTop : '1px',
-    fontSize : "20pt",
-    float : 'left',
-    lineHeight : "70px"
-}
-
-const notCurrday  = {
-    width : '14.2%',
-    height : "70px",
-    /*backgroundColor: "lightgray",*/
-    marginTop : '1px',
-    textAlign : "center",
-    fontSize : "20pt",
-    float : 'left',
-    lineHeight : "70px",
-    color : "#C2C2C2"
-}
-
 const dayweek = ['Sun', 'Mon', 'Tue', 'Wed', "Thu", "Fri", "Sat"];
 
 const dayofweek = dayweek.map((item)=>{
@@ -129,6 +32,38 @@ const dayofweek = dayweek.map((item)=>{
         </div>
     );
 });
+
+const modalstyle = {
+    overlay : {
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(20, 20, 20, 0.75)'
+  },
+    content : {
+    position                   : 'absolute',
+    width : '300px',
+    height : '380px',
+    top                        : '50%',
+    left                       : '50%',
+    marginTop : '-230px',
+    marginLeft : '-170px',
+    background                 : '#fff',
+    borderRadius               : '30px',
+    overflow :'hidden'
+  }
+}
+
+const closebutton = {
+    position : 'absolute',
+    top : '20px',
+    right : '20px',
+    width : '25px',
+    height : '25px',
+    opacity : '0.5'
+}
 
 class Schedule extends Component {
     constructor(props){
@@ -142,15 +77,26 @@ class Schedule extends Component {
             Today : today,
             Year : currYear,
             Month : currMonth,
-            Head : "No Post",
-            Content : "-"
+            Post : "No Post",
+            hasQuiz : false,
+            hasExam : false,
+            hasRecitation : false,
+            Quiz : "q",
+            Exam : "e",
+            Recitation : "r",
+            modalIsOpen : false
         };
 
-        this.nextCalendar = this.nextCalendar.bind(this);
-        this.prevCalendar = this.prevCalendar.bind(this);
+        this.increaseMonth = this.increaseMonth.bind(this);
+        this.decreaseMonth = this.decreaseMonth.bind(this);
+        this.setPost = this.setPost.bind(this);
+        this.setModal = this.setModal.bind(this);
+        this.openModal = this.openModal.bind(this);
+        this.afterOpenModal = this.afterOpenModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
-    prevCalendar () {
+    decreaseMonth () {
         var prevMonth = this.state.Month;
         var prevYear = this.state.Year;
         if (this.state.Month == 1)
@@ -163,7 +109,7 @@ class Schedule extends Component {
         });
     }
 
-    nextCalendar () {
+    increaseMonth () {
         var nextMonth = this.state.Month;
         var nextYear = this.state.Year;
         if (this.state.Month == 12)
@@ -176,59 +122,88 @@ class Schedule extends Component {
         });
     }
 
-    setPost (post) {
+    setPost (hasquiz, quiz, hasexam, exam, hasrecitation, recitation) {
+        // this.setState ({
+        //     Post : post
+        // })
         this.setState ({
-            Post : post
+            hasQuiz : hasquiz,
+            Quiz : quiz,
+            hasExam : hasexam,
+            Exam : exam,
+            hasRecitation : hasrecitation,
+            Recitation : recitation
+        })
+    }
+
+    openModal() {
+        this.setState({modalIsOpen : true});
+    }
+
+    afterOpenModal() {
+    }
+
+    closeModal() {
+        this.setState({modalIsOpen: false});
+    }
+
+    setModal (hasquiz, quiz, hasexam, exam, hasrecitation, recitation) {
+        // this.setState ({
+        //     Post : post,
+        //     modalIsOpen : true
+        // })
+        this.setState ({
+            hasQuiz : hasquiz,
+            Quiz : quiz,
+            hasExam : hasexam,
+            Exam : exam,
+            hasRecitation : hasrecitation,
+            Recitation : recitation,
+            modalIsOpen : true
         })
     }
 
     render () {
-        var dayList = getDayList(this.state.Year, this.state.Month);
-        var Calendar = dayList.map((item)=> {
-                return (
-                    <div>
-                        {item.stat=="curr"?
-                            <div style={day} onClick={this.setPost.bind(this, this.state.Head = item.infohead, this.state.Content = item.infocontent)}>
-                                {item.Day}
-                            </div> :
-                            <div style={notCurrday}>
-                                {item.Day}
-                            </div>
-                        }
-                    </div>
-                );
-            }
-        )
-
         return (
             <div className = "section">
                 <div className = "row" style = {{marginTop : '40px'}}>
                     <div className = "col span-8-of-12">
-                        <div style = {{width : '100%', fontSize :'14px', textAlign : 'center', marginBottom : '5px'}}>
-                            {this.state.Year}
-                        </div>
-                        <div className = "row" style = {{marginBottom : '30px'}}>
-                            <div style = {{float:'left'}} onClick={this.prevCalendar}>
-                                <img src={left} style={{width : '11px', marginTop :'12px'}}/>
-                            </div>
-                            <div style = {{float : "right"}} onClick={this.nextCalendar}>
-                                <img src={right} style={{width : '11px', marginTop :'12px'}}/>
-                            </div>
-                            <div className = "month">
-                                {this.state.Month}
-                            </div>
-                        </div>
+                        <CalendarHead Month={this.state.Month}
+                                      Year={this.state.Year}
+                                      increaseMonth={this.increaseMonth}
+                                      decreaseMonth={this.decreaseMonth}/>
                         {dayofweek}
-                        {Calendar}
+                        <div className = "hbar"/>
+                        <Calendar Month={this.state.Month}
+                                  Year={this.state.Year}
+                                  setPost={this.setPost}
+                                  setModal={this.setModal}/>
 
                     </div>
-                    <div style = {{height : '100%'}}>
-                        <img src='https://goo.gl/CTk1PE' className = "bar"/>
-                    </div>
-                    <div className="col span-3-of-12">
-                            {this.state.Head}<br/>
-                            {this.state.Content}
-                    </div>
+                    <div className = "bar"/>
+                    <MediaQuery query = "(min-Width : 900px)">
+                        <div className="col span-3-of-12">
+                            <DateInfo hasQuiz={this.state.hasQuiz}
+                                      hasExam={this.state.hasExam}
+                                      hasRecitation={this.state.hasRecitation}
+                                      Quiz={this.state.Quiz}
+                                      Exam={this.state.Exam}
+                                      Recitation={this.state.Recitation}/>
+                        </div>
+                    </MediaQuery>
+                    <MediaQuery query = "(max-Width : 900px)">
+                        <Modal isOpen = {this.state.modalIsOpen} onRequestClose={this.closeModal} style={modalstyle}>
+                            <p ref={subtitle => this.subtitle = subtitle}>
+                                <DateInfo hasQuiz={this.state.hasQuiz}
+                                          hasExam={this.state.hasExam}
+                                          hasRecitation={this.state.hasRecitation}
+                                          Quiz={this.state.Quiz}
+                                          Exam={this.state.Exam}
+                                          Recitation={this.state.Recitation}/>
+                            </p>
+                            <img src={close} style = {closebutton} onClick = {this.closeModal}/>
+                        </Modal>
+                    </MediaQuery>
                 </div>
             </div>
         );
