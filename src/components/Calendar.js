@@ -164,7 +164,7 @@ const quiz ={
     backgroundColor : "#DF5050",
     float : 'left',
     top : '12px',
-    left : '37%',
+    left : '33%',
     position : 'absolute'
 }
 
@@ -188,7 +188,7 @@ const recit = {
     backgroundColor : "#9FCA61",
     float : 'left',
     top : '12px',
-    left : '57%',
+    left : '61%',
     position : 'absolute'
 }
 export default class Calendar extends Component {
