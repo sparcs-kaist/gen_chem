@@ -55,9 +55,9 @@ function getDayList(year, month) {
             info : "Nothing",
             stat : "prev",
             DayNum : date,
-            hasQuiz : true,
-            hasExam : true,
-            hasRecitation : true,
+            hasQuiz : Math.random() >= 0.5,
+            hasExam : Math.random() >= 0.5,
+            hasRecitation : Math.random() >= 0.5,
             Quiz : "quiz",
             Exam : "exam",
             Recitation : "recitation class"
@@ -74,9 +74,9 @@ function getDayList(year, month) {
             info : "Nothing",
             stat : "curr",
             DayNum : date,
-            hasQuiz : true,
-            hasExam : true,
-            hasRecitation : true,
+            hasQuiz : Math.random() >= 0.5,
+            hasExam : Math.random() >= 0.5,
+            hasRecitation : Math.random() >= 0.5,
             Quiz : "quiz",
             Exam : "exam",
             Recitation : "recitation class"
@@ -92,9 +92,9 @@ function getDayList(year, month) {
             info : "Nothing",
             stat : "next",
             DayNum : date,
-            hasQuiz : true,
-            hasExam : true,
-            hasRecitation : true,
+            hasQuiz : Math.random() >= 0.5,
+            hasExam : Math.random() >= 0.5,
+            hasRecitation : Math.random() >= 0.5,
             Quiz : "quiz",
             Exam : "exam",
             Recitation : "recitation class"
@@ -115,7 +115,8 @@ const day  = {
     fontSize : "1.3em",
     float : 'left',
     lineHeight : "70px",
-    position : 'relative'
+    position : 'relative',
+    cursor : 'pointer'
 }
 
 const sunday  = {
@@ -128,7 +129,8 @@ const sunday  = {
     float : 'left',
     lineHeight : "70px",
     color : "red",
-    position : 'relative'
+    position : 'relative',
+    cursor : 'pointer'
 }
 
 const saturday  = {
@@ -141,7 +143,8 @@ const saturday  = {
     float : 'left',
     lineHeight : "70px",
     color : "blue",
-    position : 'relative'
+    position : 'relative',
+    cursor : 'pointer'
 }
 
 const notCurrday  = {
@@ -217,7 +220,8 @@ export default class Calendar extends Component {
                 }
                 if (this.props.Month == today.getMonth()+1
                     && this.props.Year == today.getFullYear()
-                    && item.Day == today.getDate())
+                    && item.Day == today.getDate()
+                    && item.stat == "curr")
                     currday = <div style={{backgroundColor: "#EEEEEE", fontWeight : "1000", borderRadius : "10px"}}>{item.Day}</div>
                 if (item.stat=="curr") {
                     if (item.DayNum==0) {

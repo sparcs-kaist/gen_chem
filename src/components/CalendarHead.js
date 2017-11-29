@@ -12,10 +12,10 @@ export default class CalendarHead extends Component {
                 </div>
                 <div className="row" style={{marginBottom: '30px'}}>
                     <div style={{float: 'left'}} onClick={this.props.decreaseMonth}>
-                        <img src={left} style={{width: '15px', marginTop: '5px'}}/>
+                        <img src={left} style={{width: '15px', marginTop: '5px', cursor: 'pointer'}}/>
                     </div>
                     <div style={{float: "right"}} onClick={this.props.increaseMonth}>
-                        <img src={right} style={{width: '15px', marginTop: '5px'}}/>
+                        <img src={right} style={{width: '15px', marginTop: '5px', cursor: 'pointer'}}/>
                     </div>
                     <div className="month">
                         {this.props.Month}
