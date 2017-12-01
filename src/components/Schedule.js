@@ -62,7 +62,8 @@ const closebutton = {
     right : '20px',
     width : '25px',
     height : '25px',
-    opacity : '0.5'
+    opacity : '0.5',
+    cursor : 'pointer'
 }
 
 class Schedule extends Component {
@@ -182,7 +183,7 @@ class Schedule extends Component {
                     </div>
                     <div className = "bar"/>
                     <MediaQuery query = "(min-Width : 900px)">
-                        <div className="col span-3-of-12">
+                        <div className="col span-3-of-12" style = {{paddingTop : '11%'}}>
                             <DateInfo hasQuiz={this.state.hasQuiz}
                                       hasExam={this.state.hasExam}
                                       hasRecitation={this.state.hasRecitation}
@@ -199,11 +200,15 @@ class Schedule extends Component {
                                           hasRecitation={this.state.hasRecitation}
                                           Quiz={this.state.Quiz}
                                           Exam={this.state.Exam}
-                                          Recitation={this.state.Recitation}/>
+                                          Recitation={this.state.Recitation}
+                                          />
                             </p>
                             <img src={close} style = {closebutton} onClick = {this.closeModal}/>
                         </Modal>
                     </MediaQuery>
+                </div>
+                <div className = "legend">
+                    hello world
                 </div>
             </div>
         );

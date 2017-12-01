@@ -16,7 +16,7 @@ const card = {
     maxWidth: '350px',
     height : '140px',
     backgroundColor: '#EBEBEB',
-    borderRadius: '30px',
+    borderRadius: '15px',
     margin : 'auto',
     marginBottom : "20px"
 }

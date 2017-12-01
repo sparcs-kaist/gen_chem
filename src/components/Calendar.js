@@ -160,11 +160,11 @@ const notCurrday  = {
 }
 
 const quiz ={
-    width : '6px',
-    height : '6px',
+    width : '6.5px',
+    height : '6.5px',
     marginLeft : 'auto',
-    borderRadius : '3px',
-    backgroundColor : "#DF5050",
+    borderRadius : '6px',
+    backgroundColor : "#DEA0EB",
     float : 'left',
     top : '12px',
     left : '33%',
@@ -172,11 +172,11 @@ const quiz ={
 }
 
 const exam = {
-    width : '6px',
-    height : '6px',
+    width : '6.5px',
+    height : '6.5px',
     marginLeft : 'auto',
-    borderRadius : '3px',
-    backgroundColor : "#5092DF",
+    borderRadius : '6px',
+    backgroundColor : "#884597",
     float : 'left',
     top : '12px',
     left : '47%',
@@ -184,11 +184,11 @@ const exam = {
 }
 
 const recit = {
-    width : '6px',
-    height : '6px',
+    width : '6.5px',
+    height : '6.5px',
     marginLeft : 'auto',
-    borderRadius : '3px',
-    backgroundColor : "#9FCA61",
+    borderRadius : '6px',
+    backgroundColor : "#460454",
     float : 'left',
     top : '12px',
     left : '61%',
