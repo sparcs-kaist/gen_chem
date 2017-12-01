@@ -58,9 +58,9 @@ function getDayList(year, month) {
             hasQuiz : Math.random() >= 0.5,
             hasExam : Math.random() >= 0.5,
             hasRecitation : Math.random() >= 0.5,
-            Quiz : "quiz",
-            Exam : "exam",
-            Recitation : "recitation class"
+            Quiz : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie",
+            Exam : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie",
+            Recitation : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie"
 
 
         });
@@ -77,9 +77,9 @@ function getDayList(year, month) {
             hasQuiz : Math.random() >= 0.5,
             hasExam : Math.random() >= 0.5,
             hasRecitation : Math.random() >= 0.5,
-            Quiz : "quiz",
-            Exam : "exam",
-            Recitation : "recitation class"
+            Quiz : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie",
+            Exam : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie",
+            Recitation : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie"
         });
         cnt++;
     }
@@ -95,9 +95,9 @@ function getDayList(year, month) {
             hasQuiz : Math.random() >= 0.5,
             hasExam : Math.random() >= 0.5,
             hasRecitation : Math.random() >= 0.5,
-            Quiz : "quiz",
-            Exam : "exam",
-            Recitation : "recitation class"
+            Quiz : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie",
+            Exam : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie",
+            Recitation : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie"
 
         })
         cnt++;
@@ -160,8 +160,8 @@ const notCurrday  = {
 }
 
 const quiz ={
-    width : '6.5px',
-    height : '6.5px',
+    width : '6px',
+    height : '6px',
     marginLeft : 'auto',
     borderRadius : '6px',
     backgroundColor : "#DEA0EB",
@@ -172,8 +172,8 @@ const quiz ={
 }
 
 const exam = {
-    width : '6.5px',
-    height : '6.5px',
+    width : '6px',
+    height : '6px',
     marginLeft : 'auto',
     borderRadius : '6px',
     backgroundColor : "#884597",
@@ -184,8 +184,8 @@ const exam = {
 }
 
 const recit = {
-    width : '6.5px',
-    height : '6.5px',
+    width : '6px',
+    height : '6px',
     marginLeft : 'auto',
     borderRadius : '6px',
     backgroundColor : "#460454",
@@ -194,6 +194,7 @@ const recit = {
     left : '61%',
     position : 'absolute'
 }
+
 export default class Calendar extends Component {
     render () {
         var dayList = getDayList(this.props.Year, this.props.Month);

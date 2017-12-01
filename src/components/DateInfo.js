@@ -36,30 +36,30 @@ export default class DateInfo extends Component {
 
         if (this.props.hasQuiz || this.props.hasExam || this.props.hasRecitation) {
             if (this.props.hasQuiz) {
-                Quiz = <div style = {{marginBottom : '40px'}}>
+                Quiz = <div style = {{marginBottom : '30px'}}>
                     <div style = {quiz}/>
                     <div>
-                        <span style={{fontSize : '20pt'}}>Quiz</span>
+                        <span style={{fontSize : '15pt', fontWeight : '900'}}>Quiz</span>
                     </div>
-                    <span style = {{fontSize : '13pt', marginLeft : '3px'}}>{this.props.Quiz}</span>
+                    <span style = {{fontSize : '11pt', marginLeft : '2px'}}>{this.props.Quiz}</span>
                 </div>
             }
             if (this.props.hasExam) {
-                Exam = <div style = {{marginBottom : '40px'}}>
+                Exam = <div style = {{marginBottom : '30px'}}>
                     <div style = {exam}/>
                     <div>
-                        <span style={{fontSize : '20pt'}}>Exam</span>
+                        <span style={{fontSize : '15pt', fontWeight : '900'}}>Exam</span>
                     </div>
-                    <span style = {{fontSize : '13pt', marginLeft : '3px'}}>{this.props.Exam}</span>
+                    <span style = {{fontSize : '11pt', marginLeft : '2px'}}>{this.props.Exam}</span>
                 </div>
             }
             if (this.props.hasRecitation) {
-                Recitation = <div style = {{marginBottom : '40px'}}>
+                Recitation = <div style = {{marginBottom : '30px'}}>
                     <div style = {recitation}/>
                     <div>
-                        <span style={{fontSize : '20pt'}}>Recitation</span>
+                        <span style={{fontSize : '15pt', fontWeight : '900'}}>Recitation</span>
                     </div>
-                    <span style = {{fontSize : '13pt', marginLeft : '3px'}}>{this.props.Recitation}</span>
+                    <span style = {{fontSize : '11pt', marginLeft : '2px'}}>{this.props.Recitation}</span>
                 </div>
             }
 
@@ -70,8 +70,8 @@ export default class DateInfo extends Component {
             </div>
 
         } else {
-            Post = <div style = {{marginLeft:'2%'}}>
-            <span style={{fontSize : '17pt', color : '#CECECE'}}>
+            Post = <div>
+            <span style={{fontSize : '15pt', color : '#BABABA', fontWeight : '700'}}>
             Nothing to do
             </span>
             </div>

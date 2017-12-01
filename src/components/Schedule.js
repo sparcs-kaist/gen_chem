@@ -40,7 +40,7 @@ const modalstyle = {
     left              : 0,
     right             : 0,
     bottom            : 0,
-    backgroundColor   : 'rgba(20, 20, 20, 0.75)'
+    backgroundColor   : 'rgba(20, 20, 20, 0.25)'
   },
     content : {
     position                   : 'absolute',
@@ -183,7 +183,7 @@ class Schedule extends Component {
                     </div>
                     <div className = "bar"/>
                     <MediaQuery query = "(min-Width : 900px)">
-                        <div className="col span-3-of-12" style = {{paddingTop : '11%'}}>
+                        <div className="col span-3-of-12" style = {{paddingTop : '11%', marginLeft : '30px'}}>
                             <DateInfo hasQuiz={this.state.hasQuiz}
                                       hasExam={this.state.hasExam}
                                       hasRecitation={this.state.hasRecitation}
@@ -206,9 +206,6 @@ class Schedule extends Component {
                             <img src={close} style = {closebutton} onClick = {this.closeModal}/>
                         </Modal>
                     </MediaQuery>
-                </div>
-                <div className = "legend">
-                    hello world
                 </div>
             </div>
         );
