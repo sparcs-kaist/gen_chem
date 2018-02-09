@@ -8,7 +8,6 @@ import UsefulLinks from "./UsefulLinks";
 import TAContact from "./TAContact";
 import Evaluation from './Evaluation';
 import SafetyRule from './SafetyRule';
-import Download from './Download';
 import Schedule from './Schedule';
 import MediaQuery from 'react-responsive';
 

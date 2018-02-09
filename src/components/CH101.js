@@ -4,7 +4,9 @@ import TabCH101 from './TabCH101';
 import { Redirect,Route, Switch } from 'react-router-dom';
 
 import Notice from './Notice';
-
+import Schedule from './Schedule';
+import Download from './Download';
+import TAContact from "./TAContact";
 import MediaQuery from 'react-responsive';
 
 export default class CH101 extends Component {
@@ -52,9 +54,9 @@ export default class CH101 extends Component {
           <div style={{paddingTop: 64}}>
             <Switch>
               <Route path='/ch101/notice' render={() => <Notice onPress={this.dropUp}/>} />
-              <Route path='/ch101/schedule' render={() => <div style={{height: 1080}}>Hi2</div>} />
-              <Route path='/ch101/download' render={() => <div style={{height: 1080}}>Hi3</div>} />
-              <Route path='/ch101/contact' render={() => <div style={{height: 1080}}>Hi4</div> } />
+              <Route path='/ch101/schedule' render={() => <Schedule />} />
+              <Route path='/ch101/download' render={() => <Download />} />
+              <Route path='/ch101/contact' render={() => <TAContact /> } />
               <Redirect from='/ch101' to='/ch101/notice' />
             </Switch>
           </div>
@@ -63,9 +65,9 @@ export default class CH101 extends Component {
           <div style={{paddingTop: 128}}>
             <Switch>
               <Route path='/ch101/notice' render={() => <Notice onPress={this.dropUp}/>} />
-              <Route path='/ch101/schedule' render={() => <div style={{height: 1080}}>Hi2</div>} />
-              <Route path='/ch101/download' render={() => <div style={{height: 1080}}>Hi3</div>} />
-              <Route path='/ch101/contact' render={() => <div style={{height: 1080}}>Hi4</div> } />
+              <Route path='/ch101/schedule' render={() => <Schedule />} />
+              <Route path='/ch101/download' render={() => <Download />} />
+              <Route path='/ch101/contact' render={() => <TAContact /> } />
               <Redirect from='/ch101' to='/ch101/notice' />
             </Switch>
           </div>
