@@ -1,0 +1,15 @@
+.boxtab1 {
+	width : 100%;
+	height : 64px;
+	background-color: #F4862C;
+	text-align: center;
+	display : table;
+}
+
+.boxtab2 {
+	width: 100%;
+	height: 64;
+	backgroundColor: #FFDD33;
+	textAlign: center;
+	display: table;
+}

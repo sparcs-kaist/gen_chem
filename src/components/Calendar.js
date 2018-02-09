@@ -58,9 +58,9 @@ function getDayList(year, month) {
             hasQuiz : Math.random() >= 0.5,
             hasExam : Math.random() >= 0.5,
             hasRecitation : Math.random() >= 0.5,
-            Quiz : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie",
-            Exam : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie",
-            Recitation : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie"
+            Quiz : "Lorem ipsum dolor sit amet, consectetur",
+            Exam : "Lorem ipsum dolor sit amet, consectetur",
+            Recitation : "Lorem ipsum dolor sit amet, consectetur"
 
 
         });
@@ -77,9 +77,9 @@ function getDayList(year, month) {
             hasQuiz : Math.random() >= 0.5,
             hasExam : Math.random() >= 0.5,
             hasRecitation : Math.random() >= 0.5,
-            Quiz : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie",
-            Exam : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie",
-            Recitation : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie"
+            Quiz : "Lorem ipsum dolor sit amet, consectetur",
+            Exam : "Lorem ipsum dolor sit amet, consectetur",
+            Recitation : "Lorem ipsum dolor sit amet, consectetur"
         });
         cnt++;
     }
@@ -95,9 +95,9 @@ function getDayList(year, month) {
             hasQuiz : Math.random() >= 0.5,
             hasExam : Math.random() >= 0.5,
             hasRecitation : Math.random() >= 0.5,
-            Quiz : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie",
-            Exam : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie",
-            Recitation : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent molestie"
+            Quiz : "Lorem ipsum dolor sit amet, consectetur adipiscing",
+            Exam : "Lorem ipsum dolor sit amet, consectetur adipiscing",
+            Recitation : "Lorem ipsum dolor sit amet, consectetur adipiscing"
 
         })
         cnt++;
@@ -251,13 +251,13 @@ export default class Calendar extends Component {
                     <div>
                         <MediaQuery query="(min-Width : 900px)">
                             <div onClick={() => {this.props.setPost(
-                                item.hasQuiz, item.Quiz, item.hasExam, item.Exam, item.hasRecitation, item.Recitation)}}>
+                                item.Day, item.hasQuiz, item.Quiz, item.hasExam, item.Exam, item.hasRecitation, item.Recitation)}}>
                                 {calendar_date}
                             </div>
                         </MediaQuery>
                         <MediaQuery query="(max-Width : 900px)">
                             <div onClick={() => {this.props.setModal(
-                                item.hasQuiz, item.Quiz, item.hasExam, item.Exam, item.hasRecitation, item.Recitation)}}>
+                                item.Day, item.hasQuiz, item.Quiz, item.hasExam, item.Exam, item.hasRecitation, item.Recitation)}}>
                                 {calendar_date}
                             </div>
                         </MediaQuery>

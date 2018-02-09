@@ -71,14 +71,14 @@ class Schedule extends Component {
         super(props);
 
         var today = new Date();
+        var currday = today.getDate();
         var currYear = today.getFullYear();
         var currMonth = today.getMonth()+1;
 
         this.state = {
-            Today : today,
+            Viewday : currday,
             Year : currYear,
             Month : currMonth,
-            Post : "No Post",
             hasQuiz : false,
             hasExam : false,
             hasRecitation : false,
@@ -123,11 +123,12 @@ class Schedule extends Component {
         });
     }
 
-    setPost (hasquiz, quiz, hasexam, exam, hasrecitation, recitation) {
+    setPost (day, hasquiz, quiz, hasexam, exam, hasrecitation, recitation) {
         // this.setState ({
         //     Post : post
         // })
         this.setState ({
+            Viewday : day,
             hasQuiz : hasquiz,
             Quiz : quiz,
             hasExam : hasexam,
@@ -148,12 +149,13 @@ class Schedule extends Component {
         this.setState({modalIsOpen: false});
     }
 
-    setModal (hasquiz, quiz, hasexam, exam, hasrecitation, recitation) {
+    setModal (day, hasquiz, quiz, hasexam, exam, hasrecitation, recitation) {
         // this.setState ({
         //     Post : post,
         //     modalIsOpen : true
         // })
         this.setState ({
+            Viewday : day,
             hasQuiz : hasquiz,
             Quiz : quiz,
             hasExam : hasexam,
@@ -178,29 +180,35 @@ class Schedule extends Component {
                         <Calendar Month={this.state.Month}
                                   Year={this.state.Year}
                                   setPost={this.setPost}
-                                  setModal={this.setModal}/>
-
+                                  setModal={this.setModal}
+                                  Viewday = {this.state.Viewday}
+                                  />
                     </div>
                     <div className = "bar"/>
                     <MediaQuery query = "(min-Width : 900px)">
-                        <div className="col span-3-of-12" style = {{paddingTop : '11%', marginLeft : '30px'}}>
+                        <div className="col span-3-of-12" style = {{paddingTop : '11%', marginLeft : '20px'}}>
                             <DateInfo hasQuiz={this.state.hasQuiz}
                                       hasExam={this.state.hasExam}
                                       hasRecitation={this.state.hasRecitation}
                                       Quiz={this.state.Quiz}
                                       Exam={this.state.Exam}
-                                      Recitation={this.state.Recitation}/>
+                                      Recitation={this.state.Recitation}
+                                      Viewmonth={this.state.Month}
+                                      Viewday = {this.state.Viewday}
+                                      />
                         </div>
                     </MediaQuery>
                     <MediaQuery query = "(max-Width : 900px)">
                         <Modal isOpen = {this.state.modalIsOpen} onRequestClose={this.closeModal} style={modalstyle}>
                             <p ref={subtitle => this.subtitle = subtitle}>
-                                <DateInfo hasQuiz={this.state.hasQuiz}
+                                <DateInfo Viewday={this.state.Viewday}
+                                					hasQuiz={this.state.hasQuiz}
                                           hasExam={this.state.hasExam}
                                           hasRecitation={this.state.hasRecitation}
                                           Quiz={this.state.Quiz}
                                           Exam={this.state.Exam}
                                           Recitation={this.state.Recitation}
+                                          Viewmonth = {this.state.Month}
                                           />
                             </p>
                             <img src={close} style = {closebutton} onClick = {this.closeModal}/>
