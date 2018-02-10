@@ -114,9 +114,21 @@ const day  = {
     marginTop : '1px',
     fontSize : "1.3em",
     float : 'left',
-    lineHeight : "70px",
-    position : 'relative',
+    /*lineHeight : "70px",*/
     cursor : 'pointer'
+}
+
+const today  = {
+    width : '14.2%',
+    height : "70px",
+    /*backgroundColor: "lightgray",*/
+    textAlign : "center",
+    marginTop : '1px',
+    fontSize : "1.3em",
+    float : 'left',
+    /*lineHeight : "70px",*/
+    cursor : 'pointer',
+    color : 'white',
 }
 
 const sunday  = {
@@ -127,9 +139,8 @@ const sunday  = {
     marginTop : '1px',
     fontSize : "1.3em",
     float : 'left',
-    lineHeight : "70px",
-    color : "red",
-    position : 'relative',
+    color:'red',
+    /*lineHeight : "70px",*/
     cursor : 'pointer'
 }
 
@@ -141,9 +152,8 @@ const saturday  = {
     marginTop : '1px',
     fontSize : "1.3em",
     float : 'left',
-    lineHeight : "70px",
+    /*lineHeight : "70px",*/
     color : "blue",
-    position : 'relative',
     cursor : 'pointer'
 }
 
@@ -155,44 +165,61 @@ const notCurrday  = {
     textAlign : "center",
     fontSize : "1.3em",
     float : 'left',
-    lineHeight : "70px",
+    /*lineHeight : "70px",*/
     color : "#C2C2C2"
 }
 
 const quiz ={
     width : '6px',
     height : '6px',
-    marginLeft : 'auto',
+    marginLeft : '31.5%',
+    marginTop : '7px',
     borderRadius : '6px',
     backgroundColor : "#DEA0EB",
     float : 'left',
-    top : '12px',
-    left : '33%',
-    position : 'absolute'
+
 }
 
 const exam = {
     width : '6px',
     height : '6px',
-    marginLeft : 'auto',
+    marginLeft : '7.3%',
+    marginTop : '7px',
     borderRadius : '6px',
     backgroundColor : "#884597",
     float : 'left',
-    top : '12px',
-    left : '47%',
-    position : 'absolute'
+
 }
 
 const recit = {
     width : '6px',
     height : '6px',
-    marginLeft : 'auto',
+    marginLeft : '7.3%',
+    marginTop : '7px',
     borderRadius : '6px',
     backgroundColor : "#460454",
     float : 'left',
-    top : '12px',
-    left : '61%',
-    position : 'absolute'
+
+}
+
+const nodot1 = {
+    width : '6px',
+    height : '6px',
+    marginLeft : '31.5%',
+    marginTop : '7px',
+    borderRadius : '6px',
+    backgroundColor : "#ffffff",
+    float : 'left',
+}
+
+const nodot2 = {
+    width : '6px',
+    height : '6px',
+    marginLeft : '7.3%',
+    marginTop : '7px',
+    borderRadius : '6px',
+    backgroundColor : '#ffffff',
+    float : 'left',
 }
 
 export default class Calendar extends Component {
@@ -200,15 +227,17 @@ export default class Calendar extends Component {
         var dayList = getDayList(this.props.Year, this.props.Month);
         var year = this.props.Year;
         var today = new Date();
+        var noDot1 = <div style = {nodot1}></div>
+        var noDot2 = <div style = {nodot2}></div>
 
         return (
             <div>
             {
             dayList.map((item)=> {
                 let calendar_date = null;
-                let Quiz = null;
-                let Exam = null;
-                let Recitation = null;
+                let Quiz = noDot1;
+                let Exam = noDot2;
+                let Recitation = noDot2;
                 let currday = item.Day;
                 if (item.hasQuiz) {
                     Quiz = <div style = {quiz}></div>
@@ -223,26 +252,34 @@ export default class Calendar extends Component {
                     && this.props.Year == today.getFullYear()
                     && item.Day == today.getDate()
                     && item.stat == "curr")
-                    currday = <div style={{backgroundColor: "#EEEEEE", fontWeight : "1000", borderRadius : "10px"}}>{item.Day}</div>
+                    {currday = <div style={{width : "39px", height : '30px',margin:'auto', backgroundColor: "#ed4731", fontWeight : "1000", borderRadius : "40px", paddingTop : "8.3px", marginTop : "-8px",}}><span style={{color : 'white'}}>{item.Day}</span></div>}
+                if (item.Day == this.props.Viewday && item.stat == "curr") {
+                    currday = <div style={{width : "39px", height : '30px',margin:'auto', backgroundColor: "#d3d3d3", fontWeight : "1000", borderRadius : "40px", paddingTop : "8.3px", marginTop : "-8px",}}>{item.Day}</div>
+                }
                 if (item.stat=="curr") {
-                    if (item.DayNum==0) {
+                    if ( item.Day == today.getDate() && this.props.Month == today.getMonth()+1 && this.props.Year == today.getFullYear() ) {
+                        calendar_date = <div style={day}>
+                        {Quiz}{Exam}{Recitation}<br/>
+                        {currday}
+                        </div>;
+                    } else if (item.DayNum==0) {
                         calendar_date = <div style={sunday}>
-                        {Quiz}{Exam}{Recitation}
+                        {Quiz}{Exam}{Recitation}<br/>
                         {currday}
                         </div>;
                     } else if (item.DayNum==6) {
                         calendar_date = <div style={saturday}>
-                        {Quiz}{Exam}{Recitation}
+                        {Quiz}{Exam}{Recitation}<br/>
                         {currday}
                         </div>;
                     } else {
                         calendar_date = <div style={day}>
-                        {Quiz}{Exam}{Recitation}
+                        {Quiz}{Exam}{Recitation}<br/>
                         {currday}
                         </div>;
                     }
                 } else {
-                    calendar_date = <div style={notCurrday}>{currday}</div>;
+                    calendar_date = <div style={notCurrday}><br/>{currday}</div>;
                 }
 
 
