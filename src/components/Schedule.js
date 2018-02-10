@@ -186,7 +186,7 @@ class Schedule extends Component {
                     </div>
                     <div className = "bar"/>
                     <MediaQuery query = "(min-Width : 900px)">
-                        <div className="col span-3-of-12" style = {{paddingTop : '11%', marginLeft : '20px'}}>
+                        <div className="col span-3-of-12" style = {{paddingTop : '11%', marginLeft : '13px'}}>
                             <DateInfo hasQuiz={this.state.hasQuiz}
                                       hasExam={this.state.hasExam}
                                       hasRecitation={this.state.hasRecitation}
