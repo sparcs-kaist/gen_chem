@@ -2,18 +2,7 @@ import React, { Component } from 'react';
 import '../grid.css';
 import '../Nanum.css';
 import '../UsefulLinks.css';
-
-const realData  = [
-    {title: "How to use beakers",
-    description: "How to use beakers without breaking your arm video",
-    link: "www.youtube.com"},
-    {title: "General Chemistry Introduction",
-    description: "Intro to genchem in 5 seconds",
-    link: "klms.kaist.ac.kr"},
-    {title: "Whatever video you want",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    link: "google.com"}
-];
+import axios from '../axios-auth';
 
 class LinkElem extends Component {
   constructor (props) {
@@ -38,34 +27,35 @@ class LinkElem extends Component {
   }
 
   render () {
-    return (<div className="list-item" onMouseEnter={() => this.onHover()} onMouseLeave={()=> this.onLeave()} style={{ zIndex: -1, opacity: this.state.hover ? 0.7 : 1 }}>
-          <div className="row" style={{...rowStyle }}>
-              <div className = "col span-2-of-2">
-                  <a href={this.props.link}>
-                      <p className="title" style={titleStyle}>{this.props.title}</p>
-                  </a>
+    return (<div className="list-item" onMouseEnter={() => this.onHover()} onMouseLeave={()=> this.onLeave()} style={{ zIndex: -1, opacity: this.state.hover ? 0.5 : 1 }}>
+              <div className="row" style={{...rowStyle }}>
+                <div className = "col span-2-of-2">
+                    <a href={this.props.link}>
+                        <p className="title" style={titleStyle}>{this.props.title}</p>
+                    </a>
+                </div>
               </div>
-          </div>
-          <div className="row" style={rowStyle}>
-              <div className = "col span-2-of-2">
-                  <a href={this.props.link}>
-                      <p className="description" style={descriptionStyle}>{this.props.description}</p>
-                  </a>
+              <div className="row" style={rowStyle}>
+                <div className = "col span-2-of-2">
+                    <a href={this.props.link}>
+                        <p className="description" style={descriptionStyle}>{this.props.description}</p>
+                    </a>
+                </div>
               </div>
-          </div>
-      </div>);
+            </div>);
   }
 }
 
 class LinkList extends Component {
+    constructor(props) {
+      super(props);
+    }
 
     render () {
       const data = this.props.data;
 
-      const listItem = data.map((link, index) =>
-
-        <LinkElem key={index} link = {link.link} title = {link.title} description = {link.description} />
-      );
+      const listItem = data.map((item, index) =>
+        <LinkElem key={index} link = {item.fields.link} title = {item.fields.title} description = {item.fields.description} />);
       return <div>{listItem}</div>
     }
 
@@ -74,12 +64,25 @@ class LinkList extends Component {
 class UsefulLinks extends Component{
     constructor(props) {
         super(props);
+        this.state = {
+          data: [],
+        }
+    }
+
+    componentDidMount() {
+      axios.get('/ch102/links/')
+        .then((response) => {
+          const result = JSON.parse(response.data);
+          this.setState({
+            data: result,
+          })
+        })
     }
 
     render () {
         return (
             <div className="section" style={sectionStyle}>
-                <LinkList data={realData} />
+                <LinkList data={this.state.data} />
             </div>
         );
     }
