@@ -50,12 +50,12 @@ export default class CH102 extends Component {
         <MediaQuery query="(max-width: 900px)">
         <div style={{paddingTop: 64}}>
           <Switch>
-            <Route path='/ch102/notice' render={() => <Notice onPress={this.dropUp}/>} />
+            <Route path='/ch102/notice' render={() => <Notice subject='ch102' onPress={this.dropUp}/>} />
             <Route path='/ch102/schedule' render={() => <Schedule />} />
             <Route path='/ch102/evaluation' render={() => <Evaluation />} />
             <Route path='/ch102/safety' render={() => <SafetyRule />} />
             <Route path='/ch102/links' render={() => <div style={{minHeight: '100vh'}}><UsefulLinks /></div>} />
-            <Route path='/ch102/contact' render={() => <TAContact/> } />
+            <Route path='/ch102/contact' render={() => <TAContact subject='ch102'/> } />
             <Redirect from='/ch102' to='/ch102/notice' />
           </Switch>
         </div>
@@ -63,12 +63,12 @@ export default class CH102 extends Component {
         <MediaQuery query="(min-width: 900px)">
           <div style={{paddingTop: 128}}>
             <Switch>
-              <Route path='/ch102/notice' render={() => <Notice onPress={this.dropUp}/>} />
+              <Route path='/ch102/notice' render={() => <Notice subject='ch102' onPress={this.dropUp}/>} />
               <Route path='/ch102/schedule' render={() => <Schedule />} />
               <Route path='/ch102/evaluation' render={() => <Evaluation />} />
               <Route path='/ch102/safety' render={() => <SafetyRule />} />
               <Route path='/ch102/links' render={() => <div style={{minHeight: '100vh'}}><UsefulLinks /></div>} />
-              <Route path='/ch102/contact' render={() => <TAContact/> } />
+              <Route path='/ch102/contact' render={() => <TAContact subject='ch102'/> } />
               <Redirect from='/ch102' to='/ch102/notice' />
             </Switch>
           </div>

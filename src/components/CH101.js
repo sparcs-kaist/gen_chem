@@ -53,10 +53,10 @@ export default class CH101 extends Component {
         <MediaQuery query="(max-width: 900px)">
           <div style={{paddingTop: 64}}>
             <Switch>
-              <Route path='/ch101/notice' render={() => <Notice onPress={this.dropUp}/>} />
+              <Route path='/ch101/notice' render={() => <Notice subject='ch101' onPress={this.dropUp}/>} />
               <Route path='/ch101/schedule' render={() => <Schedule />} />
               <Route path='/ch101/download' render={() => <Download />} />
-              <Route path='/ch101/contact' render={() => <TAContact /> } />
+              <Route path='/ch101/contact' render={() => <TAContact subject='ch101' /> } />
               <Redirect from='/ch101' to='/ch101/notice' />
             </Switch>
           </div>
@@ -64,10 +64,10 @@ export default class CH101 extends Component {
         <MediaQuery query="(min-width: 900px)">
           <div style={{paddingTop: 128}}>
             <Switch>
-              <Route path='/ch101/notice' render={() => <Notice onPress={this.dropUp}/>} />
+              <Route path='/ch101/notice' render={() => <Notice subject='ch101' onPress={this.dropUp}/>} />
               <Route path='/ch101/schedule' render={() => <Schedule />} />
               <Route path='/ch101/download' render={() => <Download />} />
-              <Route path='/ch101/contact' render={() => <TAContact /> } />
+              <Route path='/ch101/contact' render={() => <TAContact subject='ch101' /> } />
               <Redirect from='/ch101' to='/ch101/notice' />
             </Switch>
           </div>

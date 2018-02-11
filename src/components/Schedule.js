@@ -103,7 +103,7 @@ class Schedule extends Component {
         axios.get('/ch102/schedule/')
             .then((response) => {
                 const result = JSON.parse(response.data);
-                console.log(response.data)
+                console.log(response.data);
                 this.setState({
                     data: result,
                 })

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../grid.css';
 import TACard from './TAcard';
 import '../Nanum.css';
-
+import axios from '../axios-auth';
 
 const TAs = [
     {
@@ -50,36 +50,62 @@ const TAs = [
 
 
 class TAContact extends Component {
-    render() {
-        const card = TAs.map((item) => {
-            return (
-                <div className= "col span-3-of-9">
-                    <TACard name={item.name} email={item.email} lab={item.lab} img={item.photo}/>
-                </div>
-            );
-        })
-
-        return (
-            <div>
-                <div className = 'section' style = {{paddingBotton : "40px"}}>
-                    <div className = 'row' style = {{paddingTop : '27px', fontFamily : "Nanum Square"}}>
-                          <p style={{fontSize : "30px", fontWeight : '700'}}>
-                              TA Info.
-                          </p>
-                    </div>
-                    <div className = 'row'>
-                        <div style = {{fontSize : '17px', marginBottom : "25px"}}>
-                                * Teaching assistants are members of chemistry department.<br/>
-                                *TA's Office : Tel. 2893
-                        </div>
-                    </div>
-                    <div className= "row"  style = {{paddingLeft:'5%', paddingRight:'5%'}}>
-                        {card}
-                    </div>
-                </div>
-            </div>
-        );
+  constructor(props){
+    super(props);
+    this.state = {
+      data : []
     }
+  }
+
+  componentWillMount() {
+    const subject = this.props.subject;
+    const route = `${subject}/contact/`;
+    axios.get(route)
+      .then((response) => {
+        const result = JSON.parse(response.data);
+        const data = result.map((ta) => {
+          return {
+            name: ta.fields.name,
+            email: ta.fields.email,
+            lab: ta.fields.phone,
+          };
+        });
+        this.setState({
+          data: data
+        });
+      })
+  }
+
+  render() {
+    const card = this.state.data.map((item) => {
+      return (
+        <div className="col span-3-of-9">
+            <TACard name={item.name} email={item.email} lab={item.lab} img={item.photo}/>
+        </div>
+      );
+    });
+
+    return (
+      <div>
+          <div className='section' style={{paddingBotton: "40px"}}>
+              <div className='row' style={{paddingTop: '27px', fontFamily: "Nanum Square"}}>
+                  <p style={{fontSize: "30px", fontWeight: '700'}}>
+                      TA Info.
+                  </p>
+              </div>
+              <div className='row'>
+                  <div style={{fontSize: '17px', marginBottom: "25px"}}>
+                      * Teaching assistants are members of chemistry department.<br/>
+                      *TA's Office : Tel. 2893
+                  </div>
+              </div>
+              <div className="row" style={{paddingLeft: '5%', paddingRight: '5%'}}>
+                {card}
+              </div>
+          </div>
+      </div>
+    );
+  }
 }
 
 export default TAContact;
