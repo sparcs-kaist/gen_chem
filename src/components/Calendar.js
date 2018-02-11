@@ -1,3 +1,4 @@
+import axios from '../axios-auth';
 import React, { Component } from 'react';
 import '../grid.css';
 import './infostyle.css';
@@ -39,7 +40,7 @@ function getDaysofMonth(year, month) {
     return 30;
 }
 
-function getDayList(year, month) {
+function getDayList(year, month, schedule) {
     var days = [];
     var firstDay = getFirstDay(year, month);
     var dayNum = getDaysofMonth(year, month);
@@ -69,17 +70,44 @@ function getDayList(year, month) {
 
     for (i=1;i<=dayNum;i++) {
         var date = cnt%7;
+        var hasQuiz = false;
+        var hasExam = false;
+        var hasRecitation = false;
+        var Quiz = "quiz";
+        var Exam = "exam";
+        var Recitation = "recitation";
+        schedule.map((item, index) => {
+            let parsed = item.fields.event_date.split("T")[0].split("-");
+            if (parseInt(parsed[0]) == year &&
+                parseInt(parsed[1]) == month &&
+                parseInt(parsed[2]) == i
+            ) {
+                if (item.fields.type == "quiz") {
+                    hasQuiz = true;
+                    Quiz = item.fields.description;
+                }
+                if (item.fields.type == "exam") {
+                    hasExam = true;
+                    Exam = item.fields.description;
+                }
+                if (item.fields.type == "recitation") {
+                    hasRecitation = true;
+                    Recitation = item.fields.description;
+                }
+            }
+        });
+
         days.push({
             Day : i.toString(),
             info : "Nothing",
             stat : "curr",
             DayNum : date,
-            hasQuiz : Math.random() >= 0.5,
-            hasExam : Math.random() >= 0.5,
-            hasRecitation : Math.random() >= 0.5,
-            Quiz : "Lorem ipsum dolor sit amet, consectetur",
-            Exam : "Lorem ipsum dolor sit amet, consectetur",
-            Recitation : "Lorem ipsum dolor sit amet, consectetur"
+            hasQuiz : hasQuiz,
+            hasExam : hasExam,
+            hasRecitation : hasRecitation,
+            Quiz : Quiz,
+            Exam : Exam,
+            Recitation : Recitation,
         });
         cnt++;
     }
@@ -224,7 +252,7 @@ const nodot2 = {
 
 export default class Calendar extends Component {
     render () {
-        var dayList = getDayList(this.props.Year, this.props.Month);
+        var dayList = getDayList(this.props.Year, this.props.Month, this.props.AllSchedule);
         var year = this.props.Year;
         var today = new Date();
         var noDot1 = <div style = {nodot1}></div>
@@ -281,8 +309,6 @@ export default class Calendar extends Component {
                 } else {
                     calendar_date = <div style={notCurrday}><br/>{currday}</div>;
                 }
-
-
 
                 return (
                     <div>
