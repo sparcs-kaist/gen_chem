@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FileComponent from './FileComponent.js';
+import axios from '../axios-auth';
 import './Download.css';
 
 function StructFile() {
@@ -21,33 +22,21 @@ function PushEmptyFile (array){
     }
 }
 
-function GetFiles(){
+function GetFiles (mediaURL, data){
     let fileTable = new Map();
-    let array1 = [], array2 = [], array3 = [], array4 = [];
-    let file1 = new File("pdf","Spring - 101.pdf","aaa");
-    let file2 = new File("pdf","Summer - 10dsafasdfasdfasdff1.pdf","aaa");
-    let file3 = new File("pdf","Fall - 101.pdf","aaa");
-    let file4 = new File("pdf","Winter - 101.pdf","aaa");
-    let file5 = new File("pdf","Spring - 101.pdf","aaa");
-    let file6 = new File("pdf","Summer - 101.pdf","aaa");
-    array1.push(file1);
-    array1.push(file2);
-    array1.push(file3);
-    array1.push(file4);
-    array2.push(file5);
-    array2.push(file6);
-    array2.push(file6);
-    array3.push(file1);
-    array3.push(file2);
-    array4.push(file1);
-    PushEmptyFile(array1);
-    PushEmptyFile(array2);
-    PushEmptyFile(array3);
-    PushEmptyFile(array4);
-    fileTable.set(2017,array1);
-    fileTable.set(2016,array2);
-    fileTable.set(2014,array3);
-    fileTable.set(2012,array4);
+    for (let i in data){
+        let fileName, name, year, type, url, file;
+        fileName = data[i].fields.file;
+        year = data[i].fields.year;
+        type = fileName.split ('.').slice (-1) [0];
+        name = data[i].fields.name + '.' + type;
+        url = "http://localhost:8000" + mediaURL + fileName;
+        file = new File (type, name, url);
+
+        if (!fileTable.has (year))
+            fileTable.set (year, []);
+        fileTable.get (year).push (file);
+    }
     return fileTable;
 }
 
@@ -68,10 +57,9 @@ function OneYear(year, files){
     return OneYear;
 }
 
-function AllYear(){
-    let fileMap = GetFiles();
+function AllYear (mediaURL, data){
+    let fileMap = GetFiles (mediaURL, data);
     let AllYear = [];
-
     for (let [key, value] of fileMap){
         AllYear.push(
             <div className="row" style={{marginBottom: 96}}>{OneYear(key, value)}</div>
@@ -82,11 +70,26 @@ function AllYear(){
 }
 
 class Download extends Component {
+    constructor (props) {
+        super (props);
+        this.state = {};
+    }
+
+    componentWillMount (){
+        axios.get ('/ch101/download/')
+            .then((response) => {
+                this.setState({
+                    mediaURL : response.data.media_url,
+                    data : response.data.data,
+                })
+        });
+    }
+
     render() {
         const { containerStyle } = styles;
         return (
             <div className="App" style={containerStyle}>
-                {AllYear()}
+                { AllYear (this.state.mediaURL, this.state.data) }
             </div>
         );
     }
