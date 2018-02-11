@@ -1,3 +1,4 @@
+import axios from '../axios-auth';
 import React, { Component } from 'react';
 import '../grid.css';
 import './infostyle.css';
@@ -85,7 +86,8 @@ class Schedule extends Component {
             Quiz : "q",
             Exam : "e",
             Recitation : "r",
-            modalIsOpen : false
+            modalIsOpen : false,
+            data: [],
         };
 
         this.increaseMonth = this.increaseMonth.bind(this);
@@ -95,6 +97,17 @@ class Schedule extends Component {
         this.openModal = this.openModal.bind(this);
         this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+    }
+
+    componentDidMount () {
+        axios.get('/ch102/schedule/')
+            .then((response) => {
+                const result = JSON.parse(response.data);
+                console.log(response.data)
+                this.setState({
+                    data: result,
+                })
+            })
     }
 
     decreaseMonth () {
@@ -119,7 +132,7 @@ class Schedule extends Component {
 
         this.setState ({
             Month : nextMonth,
-            Year : nextYear
+            Year : nextYear,
         });
     }
 
@@ -182,6 +195,7 @@ class Schedule extends Component {
                                   setPost={this.setPost}
                                   setModal={this.setModal}
                                   Viewday = {this.state.Viewday}
+                                  AllSchedule = {this.state.data}
                                   />
                     </div>
                     <div className = "bar"/>
@@ -193,6 +207,7 @@ class Schedule extends Component {
                                       Quiz={this.state.Quiz}
                                       Exam={this.state.Exam}
                                       Recitation={this.state.Recitation}
+                                      AllSchedule = {this.state.data}
                                       Viewmonth={this.state.Month}
                                       Viewday = {this.state.Viewday}
                                       />
