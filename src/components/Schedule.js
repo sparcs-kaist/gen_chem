@@ -100,10 +100,38 @@ class Schedule extends Component {
     }
 
     componentDidMount () {
-        axios.get('/ch102/schedule/')
+        axios.get('/'+this.props.classnum+'/schedule/')
             .then((response) => {
                 const result = JSON.parse(response.data);
-                console.log(response.data);
+                console.log(response.data)
+
+                result.map((item, index) => {
+                    let parsed = item.fields.event_date.split("T")[0].split("-");
+                    if (parseInt(parsed[0]) == this.state.Year &&
+                        parseInt(parsed[1]) == this.state.Month &&
+                        parseInt(parsed[2]) == this.state.Viewday
+                    ) {
+                        if (item.fields.type == "quiz") {
+                            this.setState({
+                                hasQuiz: true,
+                                Quiz: item.fields.description,
+                            })
+                        }
+                        if (item.fields.type == "exam") {
+                            this.setState({
+                                hasExam: true,
+                                Exam: item.fields.description,
+                            })
+                        }
+                        if (item.fields.type == "recitation") {
+                            this.setState({
+                                hasRecitation: true,
+                                Recitation: item.fields.description,
+                            })
+                        }
+                    }
+                });
+
                 this.setState({
                     data: result,
                 })

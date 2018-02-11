@@ -279,8 +279,9 @@ export default class Calendar extends Component {
                 if (this.props.Month == today.getMonth()+1
                     && this.props.Year == today.getFullYear()
                     && item.Day == today.getDate()
-                    && item.stat == "curr")
-                    {currday = <div style={{width : "39px", height : '30px',margin:'auto', backgroundColor: "#ed4731", fontWeight : "1000", borderRadius : "40px", paddingTop : "8.3px", marginTop : "-8px",}}><span style={{color : 'white'}}>{item.Day}</span></div>}
+                    && item.stat == "curr") {
+                    currday = <div style={{width : "39px", height : '30px',margin:'auto', backgroundColor: "#ed4731", fontWeight : "1000", borderRadius : "40px", paddingTop : "8.3px", marginTop : "-8px",}}><span style={{color : 'white'}}>{item.Day}</span></div>
+                }
                 if (item.Day == this.props.Viewday && item.stat == "curr") {
                     currday = <div style={{width : "39px", height : '30px',margin:'auto', backgroundColor: "#d3d3d3", fontWeight : "1000", borderRadius : "40px", paddingTop : "8.3px", marginTop : "-8px",}}>{item.Day}</div>
                 }
