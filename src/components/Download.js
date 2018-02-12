@@ -30,7 +30,7 @@ function GetFiles (mediaURL, data){
         year = data[i].fields.year;
         type = fileName.split ('.').slice (-1) [0];
         name = data[i].fields.name + '.' + type;
-        url = "http://localhost:8000" + mediaURL + fileName;
+        url = "http://ssal.sparcs.org:17322" + mediaURL + fileName;
         file = new File (type, name, url);
 
         if (!fileTable.has (year))
