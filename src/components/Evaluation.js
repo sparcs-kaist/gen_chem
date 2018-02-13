@@ -16,7 +16,7 @@ class EvaluationPost extends Component {
                 <p className="fontstyle">
                     {this.props.description.split("\n").map((str) => {
                         return (
-                            <p className="entrystyle">{str}</p>
+                            <p className="entrystyle" style={{whiteSpace: "pre-wrap"}}>{str}</p>
                         )
                     })}
                 </p>
