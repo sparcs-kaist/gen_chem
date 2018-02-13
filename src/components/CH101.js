@@ -65,7 +65,7 @@ export default class CH101 extends Component {
           <div style={{paddingTop: 128}}>
             <Switch>
               <Route path='/ch101/notice' render={() => <Notice subject='ch101' onPress={this.dropUp}/>} />
-              <Route path='/ch101/schedule' render={() => <Schedule classnum={"ch101"}/>} />
+              <Route path='/ch101/schedule' render={() => <Schedule classnum="ch101"/>} />
               <Route path='/ch101/download' render={() => <Download />} />
               <Route path='/ch101/contact' render={() => <TAContact subject='ch101' /> } />
               <Redirect from='/ch101' to='/ch101/notice' />

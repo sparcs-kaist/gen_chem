@@ -1,7 +1,8 @@
 import axios from 'axios';
+// http://ssal.sparcs.org:17322/api/
 
 const instance = axios.create({
-  baseURL: 'http://ssal.sparcs.org:17322/api/',
+  baseURL: 'http://127.0.0.1:8000/api/',
 });
 
 instance.interceptors.request.use((req) => {
